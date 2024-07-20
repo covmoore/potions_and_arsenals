@@ -10,6 +10,7 @@ config_version=5
 
 [application]
 
+<<<<<<< HEAD
 config/name="potions_and_arsenals"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
@@ -17,3 +18,14 @@ config/icon="res://icon.svg"
 [dotnet]
 
 project/assembly_name="potions_and_arsenals"
+=======
+config/name="Potions And Arsenals"
+run/main_scene="res://MainMenu/MainMenu.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+>>>>>>> e311f8ab2159355caafb3a8b41914bb1ad083035
