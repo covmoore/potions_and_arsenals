@@ -1,8 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=6 format=3 uid="uid://buyhvh6k31qu7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykd1v"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yi240"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rkjyk"]
+filter = false
+
+[sub_resource type="Sky" id="Sky_ft21q"]
+sky_material = SubResource("PanoramaSkyMaterial_rkjyk")
+
+[sub_resource type="Environment" id="Environment_4lu2q"]
+background_mode = 2
+sky = SubResource("Sky_ft21q")
 
 [node name="World" type="Node3D"]
 
@@ -20,3 +30,6 @@ transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4lu2q")
