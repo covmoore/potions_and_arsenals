@@ -14,10 +14,6 @@ config/name="Potions And Arsenals"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[dotnet]
-
-project/assembly_name="Potions And Arsenals"
-
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
