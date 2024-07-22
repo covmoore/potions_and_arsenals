@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvv5pwrpajr15"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_upjyp"]
+albedo_color = Color(0.237539, 0.237539, 0.237539, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8114i"]
+material = SubResource("StandardMaterial3D_upjyp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgv2o"]
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_at3vf"]
+material = SubResource("StandardMaterial3D_wgv2o")
+
+[sub_resource type="Animation" id="Animation_jlene"]
+resource_name = "Shoot"
+length = 0.1
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.05), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8yo5o"]
+_data = {
+"Shoot": SubResource("Animation_jlene")
+}
+
+[node name="TemHandGun" type="Node3D"]
+
+[node name="Gun" type="Node3D" parent="."]
+
+[node name="Barrel" type="MeshInstance3D" parent="Gun"]
+transform = Transform3D(-0.25, 3.11369e-08, -9.55343e-16, 0, -1.55685e-08, -0.25, -2.18557e-08, -0.356165, 1.09278e-08, 1.09632e-08, -0.0379287, -0.143055)
+mesh = SubResource("CapsuleMesh_8114i")
+skeleton = NodePath("../..")
+
+[node name="grip" type="MeshInstance3D" parent="Gun"]
+transform = Transform3D(-0.25, 0, 2.18557e-08, 0, 0.204173, 0, -2.18557e-08, 0, -0.25, -1.09632e-08, -0.148992, 0.107754)
+mesh = SubResource("CapsuleMesh_at3vf")
+skeleton = NodePath("../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.488935)
+target_position = Vector3(0, 0, -1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8yo5o")
+}

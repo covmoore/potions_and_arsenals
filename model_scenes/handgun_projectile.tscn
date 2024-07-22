@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0easiqlna211"]
+
+[ext_resource type="Script" path="res://handlers/handgun_projectile.gd" id="1_jhhks"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyx2s"]
+albedo_color = Color(0, 1, 1, 1)
+emission_enabled = true
+emission = Color(0.556863, 1, 1, 1)
+emission_energy_multiplier = 4.75
+
+[sub_resource type="BoxMesh" id="BoxMesh_p28ya"]
+material = SubResource("StandardMaterial3D_oyx2s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_juvny"]
+inherit_velocity_ratio = -0.625
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8mxf"]
+albedo_color = Color(0.329412, 1, 1, 1)
+emission_enabled = true
+emission = Color(0.129412, 0.921569, 0.913725, 1)
+emission_energy_multiplier = 8.17
+
+[sub_resource type="SphereMesh" id="SphereMesh_55va6"]
+material = SubResource("StandardMaterial3D_r8mxf")
+radius = 0.04
+height = 0.08
+
+[node name="HandgunProjectile" type="Node3D"]
+script = ExtResource("1_jhhks")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.77571e-08, 0, 0.035, 0, 0.035, 0, -0.635009, 0, -1.5299e-09, 0, 0, 0)
+mesh = SubResource("BoxMesh_p28ya")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.473955, 0, 0, 0.0796404)
+target_position = Vector3(0, 0, -1)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00389647, -0.0128397, -0.381815)
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_juvny")
+draw_pass_1 = SubResource("SphereMesh_55va6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
