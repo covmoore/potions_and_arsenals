@@ -4,6 +4,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
+var health = 5
 var mouse_mode = "captured"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -62,3 +63,8 @@ func _physics_process(delta):
 			get_parent().add_child(bullet_instance)
 
 	move_and_slide()
+
+func hit(dmg):
+	health -= dmg
+	if health <= 0:
+		print("You are dead!")

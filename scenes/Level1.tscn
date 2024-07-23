@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=19 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://handlers/Player.gd" id="1_8i62a"]
+[ext_resource type="PackedScene" uid="uid://driaaxhm5pppt" path="res://model_scenes/temp_enemy.tscn" id="1_cs7gb"]
 [ext_resource type="PackedScene" uid="uid://cvv5pwrpajr15" path="res://model_scenes/tem_hand_gun.tscn" id="2_b3gqk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6la6"]
@@ -14,6 +15,25 @@ sky_material = SubResource("ProceduralSkyMaterial_f6la6")
 background_mode = 2
 sky = SubResource("Sky_bm8if")
 tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugpae"]
+albedo_color = Color(0.714684, 0.606748, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u445y"]
+material = SubResource("StandardMaterial3D_ugpae")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8los7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5qdlf"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hr1lv"]
+vertices = PackedVector3Array(-41.1485, 0.3, -34.761, -41.1485, 0.3, 34.739, 41.1515, 0.3, 34.739, 41.1515, 0.3, -34.761)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_size = 0.1
+cell_height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6mppw"]
+albedo_color = Color(0.454986, 0.809785, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ta2s"]
 
@@ -31,27 +51,37 @@ albedo_color = Color(0, 1, 1, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_24ban"]
 material = SubResource("StandardMaterial3D_eti20")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6mppw"]
-albedo_color = Color(0.454986, 0.809785, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugpae"]
-albedo_color = Color(0.714684, 0.606748, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_u445y"]
-material = SubResource("StandardMaterial3D_ugpae")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4qam7"]
-
 [node name="World" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+[node name="Map" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
 environment = SubResource("Environment_quc4e")
 
-[node name="Player" type="CharacterBody3D" parent="."]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Map"]
+transform = Transform3D(-3.40319, 0, -10.6681, 0, 7.1066, 0, 5.4136, 0, -6.70634, -5.38735, 3.30178, -19.7423)
+mesh = SubResource("BoxMesh_u445y")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Map/MeshInstance3D3"]
+physics_material_override = SubResource("PhysicsMaterial_8los7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_5qdlf")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Map"]
+navigation_mesh = SubResource("NavigationMesh_hr1lv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/NavigationRegion3D"]
+transform = Transform3D(83.2971, 0, 0, 0, 0.2, 0, 0, 0, 70.522, 0, 0, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_6mppw")
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 script = ExtResource("1_8i62a")
 
@@ -84,31 +114,18 @@ mesh = SubResource("SphereMesh_24ban")
 transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, -0.287545, 0.157747, -0.345994)
 mesh = SubResource("SphereMesh_24ban")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(83.2971, 0, 0, 0, 0.2, 0, 0, 0, 70.522, 0, 0, 0)
-use_collision = true
-material = SubResource("StandardMaterial3D_6mppw")
+[node name="TempEnemy" parent="." instance=ExtResource("1_cs7gb")]
+transform = Transform3D(-0.974668, 0, -0.223658, 0, 1, 0, 0.223658, 0, -0.974668, 0, 1.10625, 13.1442)
+player_path = NodePath("../Player")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.55029, 0, 0, 0, 8.34726, 0, 0, 0, 12.8711, 12.5576, 3.99343, 0)
-mesh = SubResource("BoxMesh_u445y")
-skeleton = NodePath("CollisionShape3D")
+[node name="TempEnemy2" parent="." instance=ExtResource("1_cs7gb")]
+transform = Transform3D(-0.391695, 0, -0.920095, 0, 1, 0, 0.920095, 0, -0.391695, 11.0141, 1.10625, 9.16435)
+player_path = NodePath("../Player")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D"]
-shape = SubResource("BoxShape3D_4qam7")
+[node name="TempEnemy3" parent="." instance=ExtResource("1_cs7gb")]
+transform = Transform3D(0.520399, 0, -0.853924, 0, 1, 0, 0.853924, 0, 0.520399, 18.1917, 0.942921, -7.18677)
+player_path = NodePath("../Player")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.87596, 0, -14.6516, 0, 4.97429, 0, 4.67883, 0, 9.00596, 11.4172, 2.67307, 18.212)
-mesh = SubResource("BoxMesh_u445y")
-skeleton = NodePath("CollisionShape3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2"]
-shape = SubResource("BoxShape3D_4qam7")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-3.40319, 0, -10.6681, 0, 7.1066, 0, 5.4136, 0, -6.70634, -5.38735, 3.30178, -19.7423)
-mesh = SubResource("BoxMesh_u445y")
-skeleton = NodePath("CollisionShape3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3"]
-shape = SubResource("BoxShape3D_4qam7")
+[node name="TempEnemy4" parent="." instance=ExtResource("1_cs7gb")]
+transform = Transform3D(0.921335, 0, -0.38877, 0, 1, 0, 0.38877, 0, 0.921335, 3.71624, 0.942921, -15.3612)
+player_path = NodePath("../Player")
