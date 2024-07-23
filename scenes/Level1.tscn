@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=22 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://handlers/Player.gd" id="1_8i62a"]
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
 [ext_resource type="PackedScene" uid="uid://driaaxhm5pppt" path="res://model_scenes/temp_enemy.tscn" id="1_cs7gb"]
 [ext_resource type="PackedScene" uid="uid://cvv5pwrpajr15" path="res://model_scenes/tem_hand_gun.tscn" id="2_b3gqk"]
 
@@ -51,7 +52,22 @@ albedo_color = Color(0, 1, 1, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_24ban"]
 material = SubResource("StandardMaterial3D_eti20")
 
+[sub_resource type="LabelSettings" id="LabelSettings_cxgmt"]
+font_size = 46
+font_color = Color(0.53, 0.0636, 0.0713732, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eqxe0"]
+font_size = 72
+font_color = Color(0.45, 0, 0.00749989, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [node name="World" type="Node3D"]
+script = ExtResource("1_aaeb4")
 
 [node name="Map" type="Node3D" parent="."]
 
@@ -129,3 +145,36 @@ player_path = NodePath("../Player")
 [node name="TempEnemy4" parent="." instance=ExtResource("1_cs7gb")]
 transform = Transform3D(0.921335, 0, -0.38877, 0, 1, 0, 0.38877, 0, 0.921335, 3.71624, 0.942921, -15.3612)
 player_path = NodePath("../Player")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 1
+
+[node name="healthTxt" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 576.0
+offset_right = 160.0
+offset_bottom = 646.0
+text = "5
+"
+label_settings = SubResource("LabelSettings_cxgmt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gameOverTxt" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 356.0
+offset_top = 264.0
+offset_right = 824.0
+offset_bottom = 366.0
+text = "You died lol"
+label_settings = SubResource("LabelSettings_eqxe0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
+[connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
