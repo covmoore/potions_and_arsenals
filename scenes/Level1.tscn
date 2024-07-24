@@ -155,6 +155,7 @@ offset_bottom = 648.0
 mouse_filter = 1
 script = ExtResource("5_6kfod")
 
+
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI"]
 
 [node name="healthTxt" type="Label" parent="PlayerUI/CanvasLayer"]
@@ -166,11 +167,11 @@ offset_top = -40.0
 offset_right = 150.0
 offset_bottom = -10.0
 grow_vertical = 0
-text = "5
-"
+text = "5"
 label_settings = SubResource("LabelSettings_cxgmt")
 horizontal_alignment = 1
 vertical_alignment = 2
+
 
 [node name="gameOverTxt" type="Label" parent="PlayerUI/CanvasLayer"]
 visible = false
