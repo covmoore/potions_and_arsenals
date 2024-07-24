@@ -155,11 +155,10 @@ offset_bottom = 648.0
 mouse_filter = 1
 script = ExtResource("5_6kfod")
 
-
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI"]
 
 [node name="healthTxt" type="Label" parent="PlayerUI/CanvasLayer"]
-anchors_preset = -1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
@@ -171,7 +170,6 @@ text = "5"
 label_settings = SubResource("LabelSettings_cxgmt")
 horizontal_alignment = 1
 vertical_alignment = 2
-
 
 [node name="gameOverTxt" type="Label" parent="PlayerUI/CanvasLayer"]
 visible = false
