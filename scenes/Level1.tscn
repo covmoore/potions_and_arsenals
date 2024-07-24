@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=16 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
+[ext_resource type="PackedScene" uid="uid://driaaxhm5pppt" path="res://model_scenes/temp_enemy.tscn" id="1_cs7gb"]
 [ext_resource type="PackedScene" uid="uid://cty3y68hwt6jn" path="res://model_scenes/player_spawn_point.tscn" id="2_c2mix"]
-[ext_resource type="PackedScene" uid="uid://5wpla3btmto1" path="res://model_scenes/enemy_spawn_area.tscn" id="5_1qsfv"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
 [ext_resource type="Script" path="res://UI/Inventory.gd" id="6_7giy0"]
 [ext_resource type="PackedScene" path="res://scenes/slot.tscn" id="6_8582x"]
@@ -93,6 +93,18 @@ transform = Transform3D(83.2971, 0, 0, 0, 0.2, 0, 0, 0, 70.522, 0, 0, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_6mppw")
 
+[node name="TempEnemy" parent="." instance=ExtResource("1_cs7gb")]
+transform = Transform3D(-0.974668, 0, -0.223658, 0, 1, 0, 0.223658, 0, -0.974668, 0, 1.10625, 13.1442)
+
+[node name="TempEnemy2" parent="." instance=ExtResource("1_cs7gb")]
+transform = Transform3D(-0.391695, 0, -0.920095, 0, 1, 0, 0.920095, 0, -0.391695, 11.0141, 1.10625, 9.16435)
+
+[node name="TempEnemy3" parent="." instance=ExtResource("1_cs7gb")]
+transform = Transform3D(0.520399, 0, -0.853924, 0, 1, 0, 0.853924, 0, 0.520399, 18.1917, 0.942921, -7.18677)
+
+[node name="TempEnemy4" parent="." instance=ExtResource("1_cs7gb")]
+transform = Transform3D(0.921335, 0, -0.38877, 0, 1, 0, 0.38877, 0, 0.921335, 3.71624, 0.942921, -15.3612)
+
 [node name="PlayerUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -135,131 +147,4 @@ label_settings = SubResource("LabelSettings_eqxe0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pauseTxt" type="Label" parent="PlayerUI/CanvasLayer"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Paused"
-label_settings = SubResource("LabelSettings_ed7c8")
-
-[node name="Inventory" type="GridContainer" parent="PlayerUI/CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -166.0
-offset_top = -168.0
-offset_right = 166.0
-offset_bottom = 166.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 4
-script = ExtResource("6_7giy0")
-
-[node name="Slot" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot3" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot4" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot5" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot6" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot7" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot8" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot9" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot10" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot11" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot12" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot13" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot14" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot15" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="Slot16" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
-layout_mode = 2
-script = ExtResource("8_jhcfk")
-
-[node name="AlchemyItem" parent="." instance=ExtResource("9_qbhlk")]
-script = ExtResource("10_11r1r")
-
-[node name="enemy_spawn_areas" type="Node3D" parent="."]
-
-[node name="EnemySpawnArea" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
-transform = Transform3D(4.85252, 0, 0, 0, 2.1, 0, 0, 0, 5.59192, -3.08046, 0.0880904, 20.5988)
-
-[node name="EnemySpawnArea2" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
-transform = Transform3D(7.99568, 0, 0, 0, 2.1, 0, 0, 0, 4.59062, 11.5965, 0.0880904, -8.95196)
-
-[node name="EnemySpawnArea3" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
-transform = Transform3D(-1.85856, 0, -3.542, 0, 2.1, 0, 3.542, 0, -1.85856, 23.8161, 0.0880904, 10.7286)
-
-[connection signal="player_created" from="." to="PlayerUI" method="_on_world_player_created"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot" to="PlayerUI/CanvasLayer/Inventory/Slot" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot2" to="PlayerUI/CanvasLayer/Inventory/Slot2" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot3" to="PlayerUI/CanvasLayer/Inventory/Slot3" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot4" to="PlayerUI/CanvasLayer/Inventory/Slot4" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot5" to="PlayerUI/CanvasLayer/Inventory/Slot5" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot6" to="PlayerUI/CanvasLayer/Inventory/Slot6" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot7" to="PlayerUI/CanvasLayer/Inventory/Slot7" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot8" to="PlayerUI/CanvasLayer/Inventory/Slot8" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot9" to="PlayerUI/CanvasLayer/Inventory/Slot9" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot10" to="PlayerUI/CanvasLayer/Inventory/Slot10" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot11" to="PlayerUI/CanvasLayer/Inventory/Slot11" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot12" to="PlayerUI/CanvasLayer/Inventory/Slot12" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot13" to="PlayerUI/CanvasLayer/Inventory/Slot13" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot14" to="PlayerUI/CanvasLayer/Inventory/Slot14" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot15" to="PlayerUI/CanvasLayer/Inventory/Slot15" method="_on_gui_input"]
-[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot16" to="PlayerUI/CanvasLayer/Inventory/Slot16" method="_on_gui_input"]
-
-[editable path="AlchemyItem"]
+[connection signal="player_created" from="." to="TempEnemy" method="_on_world_player_created"]
