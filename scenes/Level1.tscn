@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=23 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://handlers/Player.gd" id="1_8i62a"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
 [ext_resource type="PackedScene" uid="uid://driaaxhm5pppt" path="res://model_scenes/temp_enemy.tscn" id="1_cs7gb"]
 [ext_resource type="PackedScene" uid="uid://cvv5pwrpajr15" path="res://model_scenes/tem_hand_gun.tscn" id="2_b3gqk"]
+[ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6la6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -146,14 +147,15 @@ player_path = NodePath("../Player")
 transform = Transform3D(0.921335, 0, -0.38877, 0, 1, 0, 0.38877, 0, 0.921335, 3.71624, 0.942921, -15.3612)
 player_path = NodePath("../Player")
 
-[node name="Control" type="Control" parent="."]
+[node name="PlayerUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 1
+script = ExtResource("5_6kfod")
 
-[node name="healthTxt" type="Label" parent="Control"]
+[node name="healthTxt" type="Label" parent="PlayerUI"]
 layout_mode = 0
 offset_top = 576.0
 offset_right = 160.0
@@ -164,7 +166,7 @@ label_settings = SubResource("LabelSettings_cxgmt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="gameOverTxt" type="Label" parent="Control"]
+[node name="gameOverTxt" type="Label" parent="PlayerUI"]
 visible = false
 layout_mode = 0
 offset_left = 356.0
@@ -176,5 +178,5 @@ label_settings = SubResource("LabelSettings_eqxe0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
-[connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
+[connection signal="player_died" from="Player" to="PlayerUI" method="_on_player_player_died"]
+[connection signal="player_hit" from="Player" to="PlayerUI" method="_on_player_player_hit"]
