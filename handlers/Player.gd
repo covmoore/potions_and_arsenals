@@ -1,5 +1,12 @@
 extends CharacterBody3D
 
+enum PLAYER_STATE {
+	ACTIVE,
+	INVENTORY,
+	ALCHEMY,
+	PAUSED,
+	DEAD
+}
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -7,6 +14,7 @@ const SENSITIVITY = 0.003
 var isAlive = true
 var health = 5
 var mouse_mode = "captured"
+var current_state = PLAYER_STATE.ACTIVE
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -24,20 +32,38 @@ signal player_died
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	current_state = PLAYER_STATE.ACTIVE
+
+func pause_game():
+	current_state = PLAYER_STATE.PAUSED
+	Engine.time_scale = 0
+	player_ui.paused_text.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	mouse_mode = "visible"
+	if player_ui.inventory_ui.visible:
+		player_ui.inventory_ui.visible = false
+
+func resume_game():
+	current_state = PLAYER_STATE.ACTIVE
+	Engine.time_scale = 1
+	player_ui.paused_text.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	mouse_mode = "captured"
+
+func toggle_pause():
+	if current_state == PLAYER_STATE.PAUSED:
+		resume_game()
+	else:
+		pause_game()
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion and isAlive == true:
+	if event is InputEventMouseMotion and isAlive == true and current_state == PLAYER_STATE.ACTIVE:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-45), deg_to_rad(60))
 		
 	if Input.is_action_just_pressed("pause"):
-		if mouse_mode == "captured":
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			mouse_mode = "hidden"
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			mouse_mode = "captured"
+		toggle_pause()
 		
 func _physics_process(delta):
 	# Add the gravity.
@@ -45,7 +71,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle jump.
-	if isAlive == true:
+	if isAlive == true and current_state == PLAYER_STATE.ACTIVE:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 
@@ -60,7 +86,7 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 		
-		if Input.is_action_just_pressed("shoot"):
+		if Input.is_action_just_pressed("shoot") and current_state == PLAYER_STATE.ACTIVE:
 			if !gun_anim.is_playing():
 				gun_anim.play("Shoot")
 				bullet_instance = bullet.instantiate()
