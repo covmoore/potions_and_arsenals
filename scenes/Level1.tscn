@@ -1,10 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=26 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://handlers/Player.gd" id="1_8i62a"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
 [ext_resource type="PackedScene" uid="uid://driaaxhm5pppt" path="res://model_scenes/temp_enemy.tscn" id="1_cs7gb"]
 [ext_resource type="PackedScene" uid="uid://cvv5pwrpajr15" path="res://model_scenes/tem_hand_gun.tscn" id="2_b3gqk"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
+[ext_resource type="Script" path="res://UI/Inventory.gd" id="6_7giy0"]
+[ext_resource type="PackedScene" uid="uid://c5cfety2533lh" path="res://scenes/slot.tscn" id="6_8582x"]
+[ext_resource type="Script" path="res://UI/slot.gd" id="8_jhcfk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6la6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -155,11 +158,10 @@ offset_bottom = 648.0
 mouse_filter = 1
 script = ExtResource("5_6kfod")
 
-
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI"]
 
 [node name="healthTxt" type="Label" parent="PlayerUI/CanvasLayer"]
-anchors_preset = -1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
@@ -171,7 +173,6 @@ text = "5"
 label_settings = SubResource("LabelSettings_cxgmt")
 horizontal_alignment = 1
 vertical_alignment = 2
-
 
 [node name="gameOverTxt" type="Label" parent="PlayerUI/CanvasLayer"]
 visible = false
@@ -191,5 +192,25 @@ label_settings = SubResource("LabelSettings_eqxe0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Inventory" type="GridContainer" parent="PlayerUI/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -168.0
+offset_right = 166.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+script = ExtResource("6_7giy0")
+
+[node name="Slot" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+script = ExtResource("8_jhcfk")
+
 [connection signal="player_died" from="Player" to="PlayerUI" method="_on_player_player_died"]
 [connection signal="player_hit" from="Player" to="PlayerUI" method="_on_player_player_hit"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot" to="PlayerUI/CanvasLayer/Inventory/Slot" method="_on_gui_input"]

@@ -20,6 +20,7 @@ signal player_died
 @onready var camera = $Head/Camera3D
 @onready var gun_anim = $Head/Camera3D/TemHandGun/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/TemHandGun/RayCast3D
+@onready var player_ui = $"../PlayerUI"
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -75,4 +76,6 @@ func hit(dmg):
 	if health <= 0:
 		health = 0
 		isAlive = false
+		if player_ui.inventory_ui.visible:
+			player_ui.inventory_ui.visible = false
 		emit_signal("player_died")
