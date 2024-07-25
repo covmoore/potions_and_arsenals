@@ -19,7 +19,8 @@ func _on_player_player_hit(dmg):
 
 func _input(event):
 	if event is InputEventKey:
-		if event.pressed and event.physical_keycode == KEY_V and (player.current_state == player.PLAYER_STATE.ACTIVE or player.current_state == player.PLAYER_STATE.INVENTORY):
+		if event.pressed and event.physical_keycode == KEY_V and (player.current_state == player.PLAYER_STATE.ACTIVE 
+																or player.current_state == player.PLAYER_STATE.INVENTORY):
 			inventory_ui.visible = not inventory_ui.visible
 			#show the cursor if not shown
 			if inventory_ui.visible:
