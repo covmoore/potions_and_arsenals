@@ -11,10 +11,15 @@ enum PLAYER_STATE {
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
+var max_health = 5
 var isAlive = true
-var health = 5
+var health = max_health
 var mouse_mode = "captured"
 var current_state = PLAYER_STATE.ACTIVE
+var time_last_hit = 0
+var hit_to_heal_delay = 15
+var heal_delay = 5
+var last_healed = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -23,6 +28,7 @@ var bullet_instance
 
 signal player_hit
 signal player_died
+signal player_healed
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -95,9 +101,11 @@ func _physics_process(delta):
 				get_parent().add_child(bullet_instance)
 				
 		move_and_slide()
+		check_heal()
 
 func hit(dmg):
 	health -= dmg
+	time_last_hit = Time.get_ticks_msec() / 1000.0
 	if health <= 0:
 		health = 0
 		isAlive = false
@@ -105,3 +113,15 @@ func hit(dmg):
 			player_ui.inventory_ui.visible = false
 		emit_signal("player_died")
 	emit_signal("player_hit", health)
+
+func check_heal():
+	if health < max_health:
+		var time = Time.get_ticks_msec() / 1000.0
+		if time > time_last_hit + hit_to_heal_delay:
+			if time > last_healed + heal_delay && health < max_health:
+				last_healed = Time.get_ticks_msec() / 1000.0
+				health += 1
+				if health >= max_health:
+					health = max_health
+				emit_signal("player_healed", health)
+			
