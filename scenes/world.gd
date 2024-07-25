@@ -33,6 +33,8 @@ var enemy_spawn_state = SPAWN_STATE.NO_SPAWN
 signal player_created
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	delay_created = false
+	enemy_spawn_state = SPAWN_STATE.NO_SPAWN
 	game_difficulty = DIFFICULTY.PEACEFUL
 	player_spawn_point.visible = false
 	player_instance = player.instantiate()
@@ -55,11 +57,10 @@ func _process(delta):
 				spawn_delay = rng.randi_range(0.5, 2)
 				delay_created = true
 			enemy_spawn_state = SPAWN_STATE.SPAWN
-		if enemy_spawn_state == SPAWN_STATE.SPAWN:
+		if enemy_spawn_state == SPAWN_STATE.SPAWN && delay_created == true:
 			timer += delta
 			if timer >= spawn_delay:
 				timer = 0.0
-				print("create enemy!")
 				var enemy_instance = enemy.instantiate()
 				var halfHeightX = ((spawn.scale.x) * sqrt(2)) / 4
 				var halfHeightZ = ((spawn.scale.z) * sqrt(2)) / 4
