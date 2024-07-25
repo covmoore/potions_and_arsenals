@@ -1,16 +1,47 @@
 extends Node3D
 
+enum DIFFICULTY {
+	PEACEFUL,
+	NORMAL
+}
+
+var game_difficulty = DIFFICULTY.NORMAL
+	
 @onready var player_spawn_point = $PlayerSpawnPoint
+@onready var enemy_spawn_areas = $enemy_spawn_areas
 
 var player = load("res://model_scenes/player.tscn")
+var player_instance = null
+var enemy = load("res://model_scenes/temp_enemy.tscn")
+var rng = null
+var spawn_areas = null
+var timer = 0.0
+const max_enemies = 20
+const ENEMY_NUM_TRIGGER = 5
+var enemy_count = 0
+var spawn_delay = 2.0
+var delay_created = false
+
+enum SPAWN_STATE {
+	NO_SPAWN,
+	SPAWN
+}
+
+var enemy_spawn_state = SPAWN_STATE.NO_SPAWN
+
+
 signal player_created
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var player_instance = player.instantiate()
+	game_difficulty = DIFFICULTY.PEACEFUL
+	player_spawn_point.visible = false
+	player_instance = player.instantiate()
 	player_instance.position = player_spawn_point.global_position
 	player_instance.basis = player_spawn_point.global_transform.basis
 	add_child(player_instance)
-	emit_signal("player_created")
+	emit_signal("player_created", player_instance.get_path())
+	spawn_areas = enemy_spawn_areas.get_children()
+	rng = RandomNumberGenerator.new()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
