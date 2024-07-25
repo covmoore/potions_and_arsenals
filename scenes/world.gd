@@ -35,7 +35,7 @@ signal player_created
 func _ready():
 	delay_created = false
 	enemy_spawn_state = SPAWN_STATE.NO_SPAWN
-	game_difficulty = DIFFICULTY.PEACEFUL
+	game_difficulty = DIFFICULTY.NORMAL
 	player_spawn_point.visible = false
 	player_instance = player.instantiate()
 	player_instance.position = player_spawn_point.global_position
