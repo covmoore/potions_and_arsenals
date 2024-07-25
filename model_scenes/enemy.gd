@@ -7,11 +7,9 @@ var last_attacked = 0
 const HIT_SPEED = 2000
 
 var player = null
-@export var player_path : NodePath
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var collider = $CollisionShape3D
-
 
 func _ready():
 	pass
@@ -25,6 +23,7 @@ func _process(delta):
 		velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 		move_and_slide()
 		if _target_in_range():
+			print("IS IN RANGE")
 			var current_time = Time.get_ticks_msec()
 			if abs(current_time - last_attacked) > HIT_SPEED:
 				player.hit(1)
@@ -39,6 +38,5 @@ func hit(dmg):
 		queue_free()
 
 
-func _on_world_player_created():
-	print("PLAYER CREATED")
+func _on_world_player_created(player_path):
 	player = get_node(player_path)

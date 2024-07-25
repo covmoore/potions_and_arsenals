@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
-[ext_resource type="PackedScene" uid="uid://driaaxhm5pppt" path="res://model_scenes/temp_enemy.tscn" id="1_cs7gb"]
 [ext_resource type="PackedScene" uid="uid://cty3y68hwt6jn" path="res://model_scenes/player_spawn_point.tscn" id="2_c2mix"]
+[ext_resource type="PackedScene" uid="uid://5wpla3btmto1" path="res://model_scenes/enemy_spawn_area.tscn" id="5_1qsfv"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6la6"]
@@ -84,18 +84,6 @@ transform = Transform3D(83.2971, 0, 0, 0, 0.2, 0, 0, 0, 70.522, 0, 0, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_6mppw")
 
-[node name="TempEnemy" parent="." instance=ExtResource("1_cs7gb")]
-transform = Transform3D(-0.974668, 0, -0.223658, 0, 1, 0, 0.223658, 0, -0.974668, 0, 1.10625, 13.1442)
-
-[node name="TempEnemy2" parent="." instance=ExtResource("1_cs7gb")]
-transform = Transform3D(-0.391695, 0, -0.920095, 0, 1, 0, 0.920095, 0, -0.391695, 11.0141, 1.10625, 9.16435)
-
-[node name="TempEnemy3" parent="." instance=ExtResource("1_cs7gb")]
-transform = Transform3D(0.520399, 0, -0.853924, 0, 1, 0, 0.853924, 0, 0.520399, 18.1917, 0.942921, -7.18677)
-
-[node name="TempEnemy4" parent="." instance=ExtResource("1_cs7gb")]
-transform = Transform3D(0.921335, 0, -0.38877, 0, 1, 0, 0.38877, 0, 0.921335, 3.71624, 0.942921, -15.3612)
-
 [node name="PlayerUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -138,4 +126,13 @@ label_settings = SubResource("LabelSettings_eqxe0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="player_created" from="." to="TempEnemy" method="_on_world_player_created"]
+[node name="enemy_spawn_areas" type="Node3D" parent="."]
+
+[node name="EnemySpawnArea" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
+transform = Transform3D(4.85252, 0, 0, 0, 2.1, 0, 0, 0, 5.59192, -3.08046, 0.0880904, 20.5988)
+
+[node name="EnemySpawnArea2" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
+transform = Transform3D(7.99568, 0, 0, 0, 2.1, 0, 0, 0, 4.59062, 11.5965, 0.0880904, -8.95196)
+
+[node name="EnemySpawnArea3" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
+transform = Transform3D(-1.85856, 0, -3.542, 0, 2.1, 0, 3.542, 0, -1.85856, 23.8161, 0.0880904, 10.7286)
