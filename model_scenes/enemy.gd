@@ -18,17 +18,22 @@ func _ready():
 	pass
 	
 func _process(delta):
-	velocity = Vector3.ZERO
-	nav_agent.set_target_position(player.global_transform.origin)
-	look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-	var next_nav_point = nav_agent.get_next_path_position()
-	velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
-	move_and_slide()
-	if _target_in_range():
-		var current_time = Time.get_ticks_msec()
-		if abs(current_time - last_attacked) > HIT_SPEED:
-			player.hit(1)
-			last_attacked = Time.get_ticks_msec()
+	if world.game_difficulty != world.DIFFICULTY.PEACEFUL:
+		velocity = Vector3.ZERO
+		nav_agent.set_target_position(player.global_transform.origin)
+	if player != null:
+		velocity = Vector3.ZERO
+		nav_agent.set_target_position(player.global_transform.origin)
+		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+		var next_nav_point = nav_agent.get_next_path_position()
+		velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
+		move_and_slide()
+		if _target_in_range():
+			print("IS IN RANGE")
+			var current_time = Time.get_ticks_msec()
+			if abs(current_time - last_attacked) > HIT_SPEED:
+				player.hit(1)
+				last_attacked = Time.get_ticks_msec()
 
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
