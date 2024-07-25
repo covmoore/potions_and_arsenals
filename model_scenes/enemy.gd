@@ -12,6 +12,8 @@ var player = null
 @onready var collider = $CollisionShape3D
 @onready var world = $".."
 
+signal enemy_died
+
 func _ready():
 	pass
 	
@@ -24,7 +26,6 @@ func _process(delta):
 		velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 		move_and_slide()
 		if _target_in_range():
-			print("IS IN RANGE")
 			var current_time = Time.get_ticks_msec()
 			if abs(current_time - last_attacked) > HIT_SPEED:
 				player.hit(1)
@@ -40,5 +41,6 @@ func hit(dmg):
 		queue_free()
 
 
-func _on_world_player_created(player_path):
+func _on_world_player_created():
+	print("PLAYER CREATED")
 	player = get_node(player_path)
