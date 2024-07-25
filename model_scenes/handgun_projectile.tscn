@@ -35,13 +35,16 @@ transform = Transform3D(-2.77571e-08, 0, 0.035, 0, 0.035, 0, -0.635009, 0, -1.52
 mesh = SubResource("BoxMesh_p28ya")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.473955, 0, 0, 0.0796404)
-target_position = Vector3(0, 0, -1)
+transform = Transform3D(-1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0, 0, 1, 0, 0, 0)
+target_position = Vector3(0, 0, -0.5)
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00389647, -0.0128397, -0.381815)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000771503, -0.000551644, -0.317444)
 emitting = false
+one_shot = true
+preprocess = 0.01
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_juvny")
 draw_pass_1 = SubResource("SphereMesh_55va6")

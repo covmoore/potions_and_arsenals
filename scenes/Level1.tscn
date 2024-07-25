@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://5wpla3btmto1" path="res://model_scenes/enemy_spawn_area.tscn" id="5_1qsfv"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
 [ext_resource type="Script" path="res://UI/Inventory.gd" id="6_7giy0"]
-[ext_resource type="PackedScene" path="res://scenes/slot.tscn" id="6_8582x"]
+[ext_resource type="PackedScene" uid="uid://c5cfety2533lh" path="res://scenes/slot.tscn" id="6_8582x"]
 [ext_resource type="Script" path="res://UI/slot.gd" id="8_jhcfk"]
-[ext_resource type="PackedScene" path="res://scenes/alchemy_item.tscn" id="9_qbhlk"]
+[ext_resource type="PackedScene" uid="uid://imaoxsuun17a" path="res://scenes/alchemy_item.tscn" id="9_qbhlk"]
 [ext_resource type="Script" path="res://Alchemy/alchemy_item.gd" id="10_11r1r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6la6"]
@@ -83,6 +83,17 @@ skeleton = NodePath("")
 physics_material_override = SubResource("PhysicsMaterial_8los7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_5qdlf")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Map"]
+transform = Transform3D(-0.293413, 0, -0.392849, 0, 3.3167, 0, 0.466745, 0, -0.246958, -17.935, 1.6151, -4.78144)
+mesh = SubResource("BoxMesh_u445y")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Map/MeshInstance3D4"]
+physics_material_override = SubResource("PhysicsMaterial_8los7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/MeshInstance3D4/StaticBody3D"]
 shape = SubResource("BoxShape3D_5qdlf")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Map"]
