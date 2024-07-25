@@ -98,10 +98,10 @@ func _physics_process(delta):
 
 func hit(dmg):
 	health -= dmg
-	emit_signal("player_hit", health)
 	if health <= 0:
 		health = 0
 		isAlive = false
 		if player_ui.inventory_ui.visible:
 			player_ui.inventory_ui.visible = false
 		emit_signal("player_died")
+	emit_signal("player_hit", health)
