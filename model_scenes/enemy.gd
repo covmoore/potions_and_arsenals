@@ -8,6 +8,7 @@ const HIT_SPEED = 2000
 
 var player = null
 @export var player_path : NodePath
+@export var alchemy_item_path = "res://scenes/alchemy_item.tscn"
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var collider = $CollisionShape3D
@@ -36,4 +37,9 @@ func _target_in_range():
 func hit(dmg):
 	health -= dmg
 	if(health <= 0):
+		var alchemy_item_scene = load(alchemy_item_path)
+		if alchemy_item_scene:
+			var item_instance = alchemy_item_scene.instantiate()
+			item_instance.global_transform.origin = global_transform.origin
+			get_parent().add_child(item_instance)
 		queue_free()

@@ -1,18 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://imaoxsuun17a"]
+[gd_scene load_steps=6 format=3 uid="uid://imaoxsuun17a"]
+
+[ext_resource type="Script" path="res://Alchemy/AlchemyItem.gd" id="1_mp640"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dm4ml"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_7we81"]
+[sub_resource type="SphereMesh" id="SphereMesh_ii2mp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u01k8"]
-albedo_color = Color(0, 1, 1, 1)
+[sub_resource type="Skin" id="Skin_lofki"]
 
-[node name="AlchemyItem" type="StaticBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.54952, 0.670546, 0)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45bp8"]
+albedo_color = Color(0, 0.415686, 1, 1)
+
+[node name="AlchemyItem" type="Area3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_mp640")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_dm4ml")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_7we81")
-surface_material_override/0 = SubResource("StandardMaterial3D_u01k8")
+mesh = SubResource("SphereMesh_ii2mp")
+skin = SubResource("Skin_lofki")
+surface_material_override/0 = SubResource("StandardMaterial3D_45bp8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
