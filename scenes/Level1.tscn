@@ -1,13 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=22 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
 [ext_resource type="PackedScene" uid="uid://cty3y68hwt6jn" path="res://model_scenes/player_spawn_point.tscn" id="2_c2mix"]
 [ext_resource type="PackedScene" uid="uid://5wpla3btmto1" path="res://model_scenes/enemy_spawn_area.tscn" id="5_1qsfv"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
 [ext_resource type="Script" path="res://UI/Inventory.gd" id="6_7giy0"]
-[ext_resource type="PackedScene" uid="uid://c5cfety2533lh" path="res://scenes/slot.tscn" id="6_8582x"]
+[ext_resource type="PackedScene" path="res://scenes/slot.tscn" id="6_8582x"]
 [ext_resource type="Script" path="res://UI/slot.gd" id="8_jhcfk"]
-[ext_resource type="PackedScene" uid="uid://imaoxsuun17a" path="res://scenes/alchemy_item.tscn" id="9_qbhlk"]
+[ext_resource type="PackedScene" path="res://scenes/alchemy_item.tscn" id="9_qbhlk"]
 [ext_resource type="Script" path="res://Alchemy/alchemy_item.gd" id="10_11r1r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6la6"]
@@ -233,8 +233,18 @@ script = ExtResource("8_jhcfk")
 [node name="AlchemyItem" parent="." instance=ExtResource("9_qbhlk")]
 script = ExtResource("10_11r1r")
 
-[connection signal="player_died" from="Player" to="PlayerUI" method="_on_player_player_died"]
-[connection signal="player_hit" from="Player" to="PlayerUI" method="_on_player_player_hit"]
+[node name="enemy_spawn_areas" type="Node3D" parent="."]
+
+[node name="EnemySpawnArea" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
+transform = Transform3D(4.85252, 0, 0, 0, 2.1, 0, 0, 0, 5.59192, -3.08046, 0.0880904, 20.5988)
+
+[node name="EnemySpawnArea2" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
+transform = Transform3D(7.99568, 0, 0, 0, 2.1, 0, 0, 0, 4.59062, 11.5965, 0.0880904, -8.95196)
+
+[node name="EnemySpawnArea3" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
+transform = Transform3D(-1.85856, 0, -3.542, 0, 2.1, 0, 3.542, 0, -1.85856, 23.8161, 0.0880904, 10.7286)
+
+[connection signal="player_created" from="." to="PlayerUI" method="_on_world_player_created"]
 [connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot" to="PlayerUI/CanvasLayer/Inventory/Slot" method="_on_gui_input"]
 [connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot2" to="PlayerUI/CanvasLayer/Inventory/Slot2" method="_on_gui_input"]
 [connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot3" to="PlayerUI/CanvasLayer/Inventory/Slot3" method="_on_gui_input"]
@@ -253,13 +263,3 @@ script = ExtResource("10_11r1r")
 [connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot16" to="PlayerUI/CanvasLayer/Inventory/Slot16" method="_on_gui_input"]
 
 [editable path="AlchemyItem"]
-[node name="enemy_spawn_areas" type="Node3D" parent="."]
-
-[node name="EnemySpawnArea" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
-transform = Transform3D(4.85252, 0, 0, 0, 2.1, 0, 0, 0, 5.59192, -3.08046, 0.0880904, 20.5988)
-
-[node name="EnemySpawnArea2" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
-transform = Transform3D(7.99568, 0, 0, 0, 2.1, 0, 0, 0, 4.59062, 11.5965, 0.0880904, -8.95196)
-
-[node name="EnemySpawnArea3" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
-transform = Transform3D(-1.85856, 0, -3.542, 0, 2.1, 0, 3.542, 0, -1.85856, 23.8161, 0.0880904, 10.7286)

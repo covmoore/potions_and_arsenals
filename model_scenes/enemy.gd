@@ -12,6 +12,8 @@ var player = null
 @onready var collider = $CollisionShape3D
 @onready var world = $".."
 
+signal enemy_died
+
 func _ready():
 	pass
 	
@@ -39,8 +41,8 @@ func _target_in_range():
 func hit(dmg):
 	health -= dmg
 	if(health <= 0):
+		emit_signal("enemy_died")
 		queue_free()
-
 
 func _on_world_player_created(player_path):
 	player = get_node(player_path)

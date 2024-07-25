@@ -4,7 +4,7 @@ extends Control
 @onready var game_over_text = $CanvasLayer/gameOverTxt
 @onready var inventory_ui = $CanvasLayer/Inventory
 @onready var paused_text = $CanvasLayer/pauseTxt
-@onready var player = $"../Player"
+@onready var player = null
 
 func _ready():
 	paused_text.visible = false
@@ -29,3 +29,9 @@ func _input(event):
 			else:
 				player.current_state = player.PLAYER_STATE.ACTIVE
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func _on_world_player_created(player_path):
+	player = get_node(player_path)
+	player.connect("player_hit", _on_player_player_hit)
+	player.connect("player_died", _on_player_player_died)
