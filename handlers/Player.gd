@@ -35,6 +35,7 @@ signal player_healed
 @onready var gun_anim = $Head/Camera3D/TemHandGun/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/TemHandGun/RayCast3D
 @onready var player_ui = $"../PlayerUI"
+@onready var player_inventory = $"../PlayerUI/CanvasLayer/Inventory"
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -110,6 +111,9 @@ func hit(dmg):
 		health = 0
 		player_dead()
 	emit_signal("player_hit", health)
+	
+func item_picked_up_helper(item_name, item_image):
+	player_inventory.add_item(item_name, item_image)
 
 func player_dead():
 	isAlive = false

@@ -38,7 +38,7 @@ func _ready():
 	Engine.time_scale = 1
 	delay_created = false
 	enemy_spawn_state = SPAWN_STATE.NO_SPAWN
-	game_difficulty = DIFFICULTY.NORMAL
+	game_difficulty = DIFFICULTY.PEACEFUL
 	player_spawn_point.visible = false
 	player_instance = player.instantiate()
 	player_instance.position = player_spawn_point.global_position
