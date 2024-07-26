@@ -1,5 +1,7 @@
 extends GridContainer
 
+func add_item():
+	print('added item')
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -5,6 +5,8 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_dm4ml"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ii2mp"]
+radius = 0.25
+height = 0.5
 
 [sub_resource type="Skin" id="Skin_lofki"]
 
