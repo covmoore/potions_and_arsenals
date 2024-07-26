@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=23 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
 [ext_resource type="PackedScene" uid="uid://cty3y68hwt6jn" path="res://model_scenes/player_spawn_point.tscn" id="2_c2mix"]
@@ -58,6 +58,8 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_ed7c8"]
 font_size = 45
 font_color = Color(0.45098, 0, 0.00784314, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iw06f"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_aaeb4")
@@ -129,7 +131,6 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="gameOverTxt" type="Label" parent="PlayerUI/CanvasLayer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -163,6 +164,7 @@ text = "Paused"
 label_settings = SubResource("LabelSettings_ed7c8")
 
 [node name="Inventory" type="GridContainer" parent="PlayerUI/CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -241,6 +243,38 @@ script = ExtResource("8_jhcfk")
 layout_mode = 2
 script = ExtResource("8_jhcfk")
 
+[node name="tryAgain" type="Button" parent="PlayerUI/CanvasLayer"]
+material = SubResource("ShaderMaterial_iw06f")
+anchors_preset = -1
+anchor_left = 0.407
+anchor_top = 0.694
+anchor_right = 0.407
+anchor_bottom = 0.694
+offset_left = -91.864
+offset_top = -32.712
+offset_right = 92.136
+offset_bottom = 33.288
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Try again"
+
+[node name="quit" type="Button" parent="PlayerUI/CanvasLayer"]
+material = SubResource("ShaderMaterial_iw06f")
+anchors_preset = -1
+anchor_left = 0.602
+anchor_top = 0.701
+anchor_right = 0.602
+anchor_bottom = 0.701
+offset_left = -83.5041
+offset_top = -23.248
+offset_right = 82.4959
+offset_bottom = 23.752
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 19
+text = "Become a quitter"
+
 [node name="AlchemyItem" parent="." instance=ExtResource("9_qbhlk")]
 script = ExtResource("10_11r1r")
 
@@ -272,5 +306,6 @@ transform = Transform3D(-1.85856, 0, -3.542, 0, 2.1, 0, 3.542, 0, -1.85856, 23.8
 [connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot14" to="PlayerUI/CanvasLayer/Inventory/Slot14" method="_on_gui_input"]
 [connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot15" to="PlayerUI/CanvasLayer/Inventory/Slot15" method="_on_gui_input"]
 [connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot16" to="PlayerUI/CanvasLayer/Inventory/Slot16" method="_on_gui_input"]
+[connection signal="pressed" from="PlayerUI/CanvasLayer/tryAgain" to="PlayerUI" method="_on_try_again_pressed"]
 
 [editable path="AlchemyItem"]

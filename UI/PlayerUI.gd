@@ -4,15 +4,21 @@ extends Control
 @onready var game_over_text = $CanvasLayer/gameOverTxt
 @onready var inventory_ui = $CanvasLayer/Inventory
 @onready var paused_text = $CanvasLayer/pauseTxt
+@onready var try_again_btn = $CanvasLayer/tryAgain
+@onready var quit_btn = $CanvasLayer/quit
 @onready var player = null
 
 func _ready():
 	paused_text.visible = false
 	game_over_text.visible = false
 	inventory_ui.visible = false
+	try_again_btn.visible = false
+	quit_btn.visible = false
 
 func _on_player_player_died():
 	game_over_text.visible = true
+	try_again_btn.visible = true
+	quit_btn.visible = true
 
 func _on_player_player_hit(health):
 	health_text.text = "%1d" % health
@@ -39,3 +45,7 @@ func _on_world_player_created(player_path):
 	player.connect("player_hit", _on_player_player_hit)
 	player.connect("player_died", _on_player_player_died)
 	player.connect("player_healed", _on_player_player_healed)
+
+
+func _on_try_again_pressed():
+	get_tree().reload_current_scene()
