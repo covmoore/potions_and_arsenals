@@ -174,52 +174,52 @@ grow_vertical = 2
 columns = 4
 script = ExtResource("6_7giy0")
 
-[node name="Slot" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot3" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot3" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot4" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot4" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot5" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot5" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot6" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot6" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot7" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot7" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot8" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot8" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot9" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot9" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot10" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot10" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot11" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot11" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot12" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot12" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot13" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot13" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot14" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot14" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot15" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot15" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="Slot16" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot16" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
 [node name="enemy_spawn_areas" type="Node3D" parent="."]
