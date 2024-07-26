@@ -7,21 +7,21 @@ var last_attacked = 0
 const HIT_SPEED = 2000
 
 var player = null
-@export var player_path : NodePath
-@export var alchemy_item_path = "res://scenes/alchemy_item.tscn"
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var collider = $CollisionShape3D
 @onready var world = $".."
 
+signal enemy_died
 
 func _ready():
-	player = get_node(player_path)
+	pass
 	
 func _process(delta):
-	if world.game_difficulty != world.DIFFICULTY.PEACEFUL:
+	if world.game_difficulty != world.DIFFICULTY.PEACEFUL && player != null:
 		velocity = Vector3.ZERO
 		nav_agent.set_target_position(player.global_transform.origin)
+		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		var next_nav_point = nav_agent.get_next_path_position()
 		velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 		move_and_slide()
@@ -37,9 +37,8 @@ func _target_in_range():
 func hit(dmg):
 	health -= dmg
 	if(health <= 0):
-		var alchemy_item_scene = load(alchemy_item_path)
-		if alchemy_item_scene:
-			var item_instance = alchemy_item_scene.instantiate()
-			item_instance.global_transform.origin = global_transform.origin
-			get_parent().add_child(item_instance)
+		emit_signal("enemy_died")
 		queue_free()
+
+func _on_world_player_created(player_path):
+	player = get_node(player_path)

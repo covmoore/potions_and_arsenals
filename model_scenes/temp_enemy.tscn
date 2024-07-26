@@ -38,20 +38,23 @@ height = 0.2
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_atysc"]
 
 [node name="TempEnemy" type="CharacterBody3D" groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_v4k3s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_g28yy")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.217471, 0.674713, 0.385076)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.228, 0.675, -0.369706)
 mesh = SubResource("SphereMesh_a2tyq")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.232626, 0.674713, 0.385076)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.222523, 0.674713, -0.381503)
 mesh = SubResource("SphereMesh_a2tyq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008, 0, 0)
 shape = SubResource("CapsuleShape3D_atysc")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
