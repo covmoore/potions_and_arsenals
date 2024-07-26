@@ -68,7 +68,7 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-45), deg_to_rad(60))
 		
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and current_state != PLAYER_STATE.DEAD:
 		toggle_pause()
 		
 func _physics_process(delta):
@@ -108,17 +108,22 @@ func hit(dmg):
 	time_last_hit = Time.get_ticks_msec() / 1000.0
 	if health <= 0:
 		health = 0
-		isAlive = false
-		if player_ui.inventory_ui.visible:
-			player_ui.inventory_ui.visible = false
-		emit_signal("player_died")
+		player_dead()
 	emit_signal("player_hit", health)
+
+func player_dead():
+	isAlive = false
+	current_state = PLAYER_STATE.DEAD
+	if player_ui.inventory_ui.visible:
+		player_ui.inventory_ui.visible = false
+	emit_signal("player_died")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func check_heal():
 	if health < max_health:
 		var time = Time.get_ticks_msec() / 1000.0
 		if time > time_last_hit + hit_to_heal_delay:
-			if time > last_healed + heal_delay && health < max_health:
+			if time > last_healed + heal_delay:
 				last_healed = Time.get_ticks_msec() / 1000.0
 				health += 1
 				if health >= max_health:
