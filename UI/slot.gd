@@ -1,5 +1,4 @@
-extends ColorRect
-
+extends Control
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton:

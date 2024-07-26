@@ -1,5 +1,17 @@
-[gd_scene format=3 uid="uid://c5cfety2533lh"]
+[gd_scene load_steps=2 format=3 uid="uid://c5cfety2533lh"]
 
-[node name="Slot" type="ColorRect"]
+[ext_resource type="Script" path="res://UI/Slot.gd" id="1_71e1a"]
+
+[node name="Slot" type="Control"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 80.0
+script = ExtResource("1_71e1a")
+
+[node name="Null Item" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(80, 80)
 color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[connection signal="gui_input" from="Null Item" to="." method="_on_gui_input"]

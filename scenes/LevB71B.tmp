@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=20 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
 [ext_resource type="PackedScene" path="res://model_scenes/player_spawn_point.tscn" id="2_c2mix"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
 [ext_resource type="Script" path="res://UI/Inventory.gd" id="6_7giy0"]
 [ext_resource type="PackedScene" uid="uid://c5cfety2533lh" path="res://scenes/slot.tscn" id="6_8582x"]
+[ext_resource type="Script" path="res://UI/slot.gd" id="8_jhcfk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6la6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -176,51 +177,67 @@ script = ExtResource("6_7giy0")
 
 [node name="Slot" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot3" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot4" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot5" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot6" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot7" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot8" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot9" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot10" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot11" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot12" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot13" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot14" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot15" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="Slot16" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
 [node name="enemy_spawn_areas" type="Node3D" parent="."]
 
@@ -234,3 +251,19 @@ transform = Transform3D(7.99568, 0, 0, 0, 2.1, 0, 0, 0, 4.59062, 11.5965, 0.0880
 transform = Transform3D(-1.85856, 0, -3.542, 0, 2.1, 0, 3.542, 0, -1.85856, 23.8161, 0.0880904, 10.7286)
 
 [connection signal="player_created" from="." to="PlayerUI" method="_on_world_player_created"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot" to="PlayerUI/CanvasLayer/Inventory/Slot" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot2" to="PlayerUI/CanvasLayer/Inventory/Slot2" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot3" to="PlayerUI/CanvasLayer/Inventory/Slot3" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot4" to="PlayerUI/CanvasLayer/Inventory/Slot4" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot5" to="PlayerUI/CanvasLayer/Inventory/Slot5" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot6" to="PlayerUI/CanvasLayer/Inventory/Slot6" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot7" to="PlayerUI/CanvasLayer/Inventory/Slot7" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot8" to="PlayerUI/CanvasLayer/Inventory/Slot8" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot9" to="PlayerUI/CanvasLayer/Inventory/Slot9" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot10" to="PlayerUI/CanvasLayer/Inventory/Slot10" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot11" to="PlayerUI/CanvasLayer/Inventory/Slot11" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot12" to="PlayerUI/CanvasLayer/Inventory/Slot12" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot13" to="PlayerUI/CanvasLayer/Inventory/Slot13" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot14" to="PlayerUI/CanvasLayer/Inventory/Slot14" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot15" to="PlayerUI/CanvasLayer/Inventory/Slot15" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot16" to="PlayerUI/CanvasLayer/Inventory/Slot16" method="_on_gui_input"]

@@ -38,6 +38,11 @@ func hit(dmg):
 	health -= dmg
 	if(health <= 0):
 		emit_signal("enemy_died")
+		var alchemyItem = ResourceLoader.load("res://scenes/alchemy_item.tscn")
+		if alchemyItem:
+			var alchemy_item_instance = alchemyItem.instantiate()
+			world.add_child(alchemy_item_instance)
+			alchemy_item_instance.global_transform.origin = global_transform.origin
 		queue_free()
 
 func _on_world_player_created(player_path):
