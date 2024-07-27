@@ -46,6 +46,11 @@ func initialize_properties(item_name: String, item_image_path: String, item_coll
 			var mesh = ResourceLoader.load(item_mesh_path)
 			if mesh:
 				mesh_instance.mesh = mesh
+				#Edit specific meshes sizes and scales
+				if item_name == "Hourglass":
+					mesh_instance.transform.origin = Vector3(0, .5, 0)
+					var scaled_basis = mesh_instance.transform.basis.scaled(Vector3(0.25, 0.25, 0.25))
+					mesh_instance.transform.basis = scaled_basis
 		else:
 			world_instance.debug_print(str("Error: Failed to load mesh from path: " + item_mesh_path))
 	else:

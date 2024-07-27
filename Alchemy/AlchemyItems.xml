@@ -11,4 +11,10 @@
 		<collider_path>res://Alchemy/colliders/sphere.tres</collider_path>
 		<mesh_path>res://Alchemy/meshes/gold.tres</mesh_path>
 	</item>
+	<item>
+		<name>Hourglass</name>
+		<image_path>res://Alchemy/images/hourglass.png</image_path>
+		<collider_path>res://Alchemy/colliders/cylinder.tres</collider_path>
+		<mesh_path>res://Alchemy/meshes/hourglass.tres</mesh_path>
+	</item>
 </items>
