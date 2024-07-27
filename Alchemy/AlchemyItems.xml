@@ -2,6 +2,13 @@
 	<item>
 		<name>Silver</name>
 		<image_path>res://Alchemy/images/silver.png</image_path>
+		<collider_path>res://Alchemy/colliders/sphere.tres</collider_path>
 		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+	</item>
+	<item>
+		<name>Gold</name>
+		<image_path>res://Alchemy/images/gold.png</image_path>
+		<collider_path>res://Alchemy/colliders/sphere.tres</collider_path>
+		<mesh_path>res://Alchemy/meshes/gold.tres</mesh_path>
 	</item>
 </items>

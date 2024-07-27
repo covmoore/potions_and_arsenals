@@ -15,16 +15,30 @@ var is_on_ground = false
 #Dynamic properties
 var item_name : String
 var item_image_path : String
+var item_collider_path : String
 var item_mesh_path: String
 
-func initialize_properties(item_name: String, item_image_path: String, item_mesh_path: String):
+func initialize_properties(item_name: String, item_image_path: String, item_collider_path : String, item_mesh_path: String):
 	self.item_name = item_name
 	self.item_image_path = item_image_path
+	self.item_collider_path = item_collider_path
 	self.item_mesh_path = item_mesh_path
 	
 	world_instance.debug_print(str(self.item_name))
 	world_instance.debug_print(str(self.item_image_path))
+	world_instance.debug_print(str(self.item_collider_path))
 	world_instance.debug_print(str(self.item_mesh_path))
+	
+	var collider_instance = $CollisionShape3D
+	if collider_instance:
+		if item_collider_path != "":
+			var collider = ResourceLoader.load(item_collider_path)
+			if collider:
+				collider_instance.shape = collider
+		else:
+			world_instance.debug_print(str("Error: Failed to load mesh from path: " + item_mesh_path))
+	else:
+		world_instance.debug_print(str("Error: MeshInstance3D node not found or item_mesh_path is empty."))
 	
 	var mesh_instance = $MeshInstance3D
 	if mesh_instance:
