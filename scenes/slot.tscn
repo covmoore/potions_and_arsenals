@@ -12,6 +12,7 @@ script = ExtResource("1_71e1a")
 
 [node name="Null Item" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
 color = Color(0.252028, 0.252028, 0.252028, 1)
 
 [connection signal="gui_input" from="Null Item" to="." method="_on_gui_input"]

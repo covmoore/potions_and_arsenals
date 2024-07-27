@@ -5,7 +5,19 @@ enum DIFFICULTY {
 	NORMAL
 }
 
+enum DEBUG_LEVEL {
+	PRODUCTION,
+	DEBUG
+}
+
+enum SPAWN_STATE {
+	NO_SPAWN,
+	SPAWN
+}
+
 var game_difficulty = DIFFICULTY.NORMAL
+var debug_level = DEBUG_LEVEL.PRODUCTION
+var enemy_spawn_state = SPAWN_STATE.NO_SPAWN 
 	
 @onready var player_spawn_point = $PlayerSpawnPoint
 @onready var enemy_spawn_areas = $enemy_spawn_areas
@@ -22,13 +34,6 @@ var enemy_count = 0
 var spawn_delay = 2.0
 var delay_created = false
 
-enum SPAWN_STATE {
-	NO_SPAWN,
-	SPAWN
-}
-
-var enemy_spawn_state = SPAWN_STATE.NO_SPAWN
-
 
 signal player_created
 # Called when the node enters the scene tree for the first time.
@@ -36,6 +41,7 @@ func _ready():
 	delay_created = false
 	enemy_spawn_state = SPAWN_STATE.NO_SPAWN
 	game_difficulty = DIFFICULTY.PEACEFUL
+	debug_level = DEBUG_LEVEL.DEBUG
 	player_spawn_point.visible = false
 	player_instance = player.instantiate()
 	player_instance.position = player_spawn_point.global_position
@@ -80,3 +86,9 @@ func _process(delta):
 			
 func _on_enemy_enemy_died():
 	enemy_count -= 1
+	
+
+#Prints a message based on debug level
+func debug_print(msg):
+	if debug_level == DEBUG_LEVEL.DEBUG:
+		print(msg)
