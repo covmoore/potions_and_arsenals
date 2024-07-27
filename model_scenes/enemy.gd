@@ -45,14 +45,15 @@ func hit(dmg):
 			var random_item = alchemy_item_manager_instance.get_random_item()
 			var item_name = random_item['name']
 			var item_image_path = random_item['image_path']
+			var item_collider_path = random_item['collider_path']
 			var item_mesh_path = random_item['mesh_path']
 			
 			if item_name != "no_item":
-				print(item_name)
+				world.debug_print(str(item_name))
 				var alchemy_item_instance = alchemy_item_scene.instantiate()
 				world.add_child(alchemy_item_instance)
 				# Initialize the alchemy item with the parameters from random_item
-				alchemy_item_instance.initialize_properties(item_name, item_image_path, item_mesh_path)
+				alchemy_item_instance.initialize_properties(item_name, item_image_path, item_collider_path, item_mesh_path)
 				alchemy_item_instance.global_transform.origin = global_transform.origin
 		queue_free()
 

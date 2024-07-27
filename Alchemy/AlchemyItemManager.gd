@@ -1,5 +1,6 @@
 extends Node
 
+
 var rngTree
 @onready var alchemy_data = {}
 var drop_probability = .20
@@ -17,12 +18,13 @@ func _initialize():
 	for name in alchemy_data.keys():
 		print("%s's bound: %4.2f" % [name, alchemy_data[name].upperBound])
 	populate_rng_tree(alchemy_data)
+
 	# Ensure the world instance is properly retrieved
 	world_instance = get_tree().get_root().get_node("World")
 	if world_instance == null:
 		print("World node not found!")
-	#else:
-		#world_instance.debug_print(alchemy_data)
+	else:
+		world_instance.debug_print(alchemy_data)
 
 func load_xml(file_path: String) -> Dictionary:
 	var data = {}
