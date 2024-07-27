@@ -60,6 +60,7 @@ func load_xml(file_path: String) -> Dictionary:
 				data[key] = item
 				var no_item = {
 					"image_path": "",
+					"collider_path":"",
 					"mesh_path": "",
 					"upperBound": RNG_RANGE,
 					"grade": "common",
