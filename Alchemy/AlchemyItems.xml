@@ -1,38 +1,114 @@
 <items>
 	<item>
 		<name>Blade of Grass</name>
-		<image_path>res://Alchemy/images/blade_of_grass.png</image_path>
-		<collider_path>res://Alchemy/colliders/sphere.tres</collider_path>
-		<mesh_path>res://Alchemy/meshes/blade_of_grass.tres</mesh_path>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.18</loot_probability>
+		<grade>common</grade>
+	</item>
+	<item>
+		<name>Sea Shell</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.16</loot_probability>
+		<grade>common</grade>
+	</item>
+	<item>
+		<name>Sugar Water</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.14</loot_probability>
+		<grade>common</grade>
+	</item>
+	<item>
+		<name>Hour Glass</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.12</loot_probability>
+		<grade>common</grade>
 	</item>
 	<item>
 		<name>Silver</name>
 		<image_path>res://Alchemy/images/silver.png</image_path>
-		<collider_path>res://Alchemy/colliders/sphere.tres</collider_path>
 		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.10</loot_probability>
+		<grade>common</grade>
 	</item>
 	<item>
-		<name>Gold</name>
-		<image_path>res://Alchemy/images/gold.png</image_path>
-		<collider_path>res://Alchemy/colliders/sphere.tres</collider_path>
-		<mesh_path>res://Alchemy/meshes/gold.tres</mesh_path>
-	</item>
-	<item>
-		<name>Hourglass</name>
-		<image_path>res://Alchemy/images/hourglass.png</image_path>
-		<collider_path>res://Alchemy/colliders/cylinder.tres</collider_path>
-		<mesh_path>res://Alchemy/meshes/hourglass.tres</mesh_path>
+		<name>Silver</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.10</loot_probability>
+		<grade>common</grade>
 	</item>
 	<item>
 		<name>Burning Flower</name>
-		<image_path>res://Alchemy/images/flower.png</image_path>
-		<collider_path>res://Alchemy/colliders/cylinder.tres</collider_path>
-		<mesh_path>res://Alchemy/meshes/flower.tres</mesh_path>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.09</loot_probability>
+		<grade>common</grade>
+	</item>
+	<item>
+		<name>Amethyst</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.055</loot_probability>
+		<grade>rare</grade>
+	</item>
+	<item>
+		<name>Toxic Sludge</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.05</loot_probability>
+		<grade>rare</grade>
+	</item>
+	<item>
+		<name>Fairy Wings</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.04</loot_probability>
+		<grade>rare</grade>
+	</item>
+	<item>
+		<name>Gold</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.03</loot_probability>
+		<grade>rare</grade>
 	</item>
 	<item>
 		<name>Diamond</name>
-		<image_path>res://Alchemy/images/diamond.png</image_path>
-		<collider_path>res://Alchemy/colliders/box.tres</collider_path>
-		<mesh_path>res://Alchemy/meshes/diamond.tres</mesh_path>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.015</loot_probability>
+		<grade>Legendary</grade>
+	</item>
+	<item>
+		<name>Void Dust</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.010</loot_probability>
+		<grade>Legendary</grade>
+	</item>
+	<item>
+		<name>Pegasus Horn</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.009</loot_probability>
+		<grade>Legendary</grade>
+	</item>
+	<item>
+		<name>Ether Crystal</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.0005</loot_probability>
+		<grade>Exotic</grade>
+	</item>
+	<item>
+		<name>Demon's Blood</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+		<loot_probability>0.0005</loot_probability>
+		<grade>Exotic</grade>
 	</item>
 </items>
