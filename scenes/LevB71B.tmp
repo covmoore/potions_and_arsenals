@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=20 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
 [ext_resource type="PackedScene" path="res://model_scenes/player_spawn_point.tscn" id="2_c2mix"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
 [ext_resource type="Script" path="res://UI/Inventory.gd" id="6_7giy0"]
 [ext_resource type="PackedScene" uid="uid://c5cfety2533lh" path="res://scenes/slot.tscn" id="6_8582x"]
-[ext_resource type="PackedScene" uid="uid://imaoxsuun17a" path="res://scenes/alchemy_item.tscn" id="9_qbhlk"]
+[ext_resource type="Script" path="res://UI/slot.gd" id="8_jhcfk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6la6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,8 +31,10 @@ material = SubResource("StandardMaterial3D_ugpae")
 [sub_resource type="BoxShape3D" id="BoxShape3D_5qdlf"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hr1lv"]
-vertices = PackedVector3Array(-41.1485, 0.4, -34.761, -41.1485, 0.4, 34.739, 41.1015, 0.4, 34.739, 41.1015, 0.4, -34.761)
+vertices = PackedVector3Array(-41.1485, 0.3, -34.761, -41.1485, 0.3, 34.739, 41.1515, 0.3, 34.739, 41.1515, 0.3, -34.761)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_size = 0.1
+cell_height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6mppw"]
 albedo_color = Color(0.454986, 0.809785, 0, 1)
@@ -54,8 +56,6 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_ed7c8"]
 font_size = 45
 font_color = Color(0.45098, 0, 0.00784314, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iw06f"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_aaeb4")
@@ -127,6 +127,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="gameOverTxt" type="Label" parent="PlayerUI/CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -160,7 +161,6 @@ text = "Paused"
 label_settings = SubResource("LabelSettings_ed7c8")
 
 [node name="Inventory" type="GridContainer" parent="PlayerUI/CanvasLayer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -175,88 +175,69 @@ grow_vertical = 2
 columns = 4
 script = ExtResource("6_7giy0")
 
-[node name="InventorySlot" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot3" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot3" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot4" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot4" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot5" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot5" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot6" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot6" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot7" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot7" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot8" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot8" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot9" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot9" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot10" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot10" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot11" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot11" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot12" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot12" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot13" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot13" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot14" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot14" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot15" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot15" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
+script = ExtResource("8_jhcfk")
 
-[node name="InventorySlot16" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="Slot16" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
-
-[node name="tryAgain" type="Button" parent="PlayerUI/CanvasLayer"]
-material = SubResource("ShaderMaterial_iw06f")
-anchors_preset = -1
-anchor_left = 0.407
-anchor_top = 0.694
-anchor_right = 0.407
-anchor_bottom = 0.694
-offset_left = -91.864
-offset_top = -32.712
-offset_right = 92.136
-offset_bottom = 33.288
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 25
-text = "Try again"
-
-[node name="quit" type="Button" parent="PlayerUI/CanvasLayer"]
-material = SubResource("ShaderMaterial_iw06f")
-anchors_preset = -1
-anchor_left = 0.602
-anchor_top = 0.701
-anchor_right = 0.602
-anchor_bottom = 0.701
-offset_left = -83.5041
-offset_top = -23.248
-offset_right = 82.4959
-offset_bottom = 23.752
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 19
-text = "Become a quitter"
-
-[node name="AlchemyItem" parent="." instance=ExtResource("9_qbhlk")]
-script = null
+script = ExtResource("8_jhcfk")
 
 [node name="enemy_spawn_areas" type="Node3D" parent="."]
 
@@ -270,3 +251,19 @@ transform = Transform3D(7.99568, 0, 0, 0, 2.1, 0, 0, 0, 4.59062, 11.5965, 0.0880
 transform = Transform3D(-1.85856, 0, -3.542, 0, 2.1, 0, 3.542, 0, -1.85856, 23.8161, 0.0880904, 10.7286)
 
 [connection signal="player_created" from="." to="PlayerUI" method="_on_world_player_created"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot" to="PlayerUI/CanvasLayer/Inventory/Slot" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot2" to="PlayerUI/CanvasLayer/Inventory/Slot2" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot3" to="PlayerUI/CanvasLayer/Inventory/Slot3" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot4" to="PlayerUI/CanvasLayer/Inventory/Slot4" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot5" to="PlayerUI/CanvasLayer/Inventory/Slot5" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot6" to="PlayerUI/CanvasLayer/Inventory/Slot6" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot7" to="PlayerUI/CanvasLayer/Inventory/Slot7" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot8" to="PlayerUI/CanvasLayer/Inventory/Slot8" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot9" to="PlayerUI/CanvasLayer/Inventory/Slot9" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot10" to="PlayerUI/CanvasLayer/Inventory/Slot10" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot11" to="PlayerUI/CanvasLayer/Inventory/Slot11" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot12" to="PlayerUI/CanvasLayer/Inventory/Slot12" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot13" to="PlayerUI/CanvasLayer/Inventory/Slot13" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot14" to="PlayerUI/CanvasLayer/Inventory/Slot14" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot15" to="PlayerUI/CanvasLayer/Inventory/Slot15" method="_on_gui_input"]
+[connection signal="gui_input" from="PlayerUI/CanvasLayer/Inventory/Slot16" to="PlayerUI/CanvasLayer/Inventory/Slot16" method="_on_gui_input"]

@@ -27,12 +27,12 @@ func add_item(item_name, item_image):
 				if new_slot:
 					var new_slot_instance = new_slot.instantiate()
 					# Replace the empty slot with the new slot instance
-					slot.remove_child(slot.get_child(0))  # Remove the empty slot's child
-					slot.add_child(new_slot_instance)  # Add the new slot instance
+					slot.remove_child(slot.get_child(0)) 
+					slot.add_child(new_slot_instance) 
 					# Set the new slot properties
 					new_slot_instance.name = item_name
 					new_slot_instance.setItemTexture(item_image)
 					
 					# Update the inventory array
 					inventory[i] = slot
-					break  # Exit the loop after adding the item
+					break  
