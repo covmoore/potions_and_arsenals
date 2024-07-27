@@ -43,7 +43,7 @@ func _ready():
 	Engine.time_scale = 1
 	delay_created = false
 	enemy_spawn_state = SPAWN_STATE.NO_SPAWN
-	game_difficulty = DIFFICULTY.PEACEFUL
+	game_difficulty = DIFFICULTY.NORMAL
 	debug_level = DEBUG_LEVEL.DEBUG
 	player_spawn_point.visible = false
 	player_instance = player.instantiate()

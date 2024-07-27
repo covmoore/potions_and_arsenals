@@ -1,39 +1,47 @@
 class_name RngSearchTree
 
-var upperBound
-var name
-var left
-var right
-var parent
+var root = null
 
-func searchItem(root, key):
-	var previous_node = root
-	while (root != null):
-		if(key > root.upperBound):
-			if(root.right == null):
-				if(is_right_child(root)):
-					return get_right_grand_father(root)
+class RngNode:
+	var name
+	var left
+	var right
+	var parent
+	var upperBound
+
+
+func searchItem(key):
+	return search(root, key)
+
+func search(node, key):
+	var previous_node = node
+	while (node != null):
+		if(key > node.upperBound):
+			if(node.right == null):
+				if(is_right_child(node)):
+					return get_right_grand_father(node)
 				else:
-					return root.parent
-			root = root.right
-		elif(key < root.upperBound):
-			if(root.left == null):
-				if(is_right_child(root)):
-					return get_right_grand_father(root)
-				else:
-					return root.parent
-			root = root.left
+					return node.parent
+			node = node.right
+		elif(key < node.upperBound):
+			if(node.left == null):
+				return node
+			node = node.left
 		else:
-			return root
+			return node
 
 func is_right_child(node):
+	if node.parent.right == null:
+		return false
 	if node.parent.right.upperBound == node.upperBound:
 		return true
 	else:
 		return false
 
 func is_left_child(node):
-	if node.parent.left.upperbound == node.upperBound:
+	if node.parent.left == null:
+		return false
+	if node.parent.left.upperBound == node.upperBound:
 		return true
 	else:
 		return false
@@ -45,26 +53,34 @@ func get_right_grand_father(node):
 		if is_left_child(temp_node.parent):
 			return temp_node.parent.parent
 		else:
-			temp_node = node.parent
+			temp_node = temp_node.parent
 	return node
 
-func insert(parent, root, upperBound, name):
+func insert(upperBound, name):
 	if root == null:
+		root = create_node(root, upperBound, name)
+		root.parent = root
+		return root
+	else:
+		insert_node(root.parent, root, upperBound, name)
+
+func insert_node(parent, node, upperBound, name):
+	if node == null:
 		return create_node(parent, upperBound, name)
 	
-	if upperBound < root.upperBound:
-		root.left = insert(root, root.left, upperBound, name)
-	elif upperBound > root.upperBound:
-		root.right = insert(root, root.right, upperBound, name)
-	return root
+	if upperBound < node.upperBound:
+		node.left = insert_node(node, node.left, upperBound, name)
+	elif upperBound > node.upperBound:
+		node.right = insert_node(node, node.right, upperBound, name)
+	return node
 
 func create_node(parent, upperBound, name):
-	var temp = RngSearchTree.new()
+	var temp = RngNode.new()
 	temp.upperBound = upperBound
 	temp.name = name
-	temp.parent = parent
 	temp.left = null
 	temp.right = null
+	temp.parent = parent
 	return temp
 
 
