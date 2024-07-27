@@ -25,6 +25,7 @@ var enemy_spawn_state = SPAWN_STATE.NO_SPAWN
 var player = load("res://model_scenes/player.tscn")
 var player_instance = null
 var enemy = load("res://model_scenes/temp_enemy.tscn")
+var game_timer = 0
 var rng = null
 var spawn_areas = null
 var timer = 0.0
@@ -38,9 +39,12 @@ var delay_created = false
 signal player_created
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	game_timer = 0
+	Engine.time_scale = 1
 	delay_created = false
 	enemy_spawn_state = SPAWN_STATE.NO_SPAWN
 	game_difficulty = DIFFICULTY.PEACEFUL
+
 	debug_level = DEBUG_LEVEL.DEBUG
 	player_spawn_point.visible = false
 	player_instance = player.instantiate()
@@ -54,6 +58,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	game_timer = Time.get_ticks_msec() / 1000.00
 	if player_instance != null && rng != null && spawn_areas != null:
 		var randNum = rng.randi_range(0, enemy_spawn_areas.get_child_count()-1)
 		var spawn = spawn_areas[randNum]

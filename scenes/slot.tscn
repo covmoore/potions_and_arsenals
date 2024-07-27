@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5cfety2533lh"]
 
-[ext_resource type="Script" path="res://UI/Slot.gd" id="1_71e1a"]
 
+[ext_resource type="Script" path="res://UI/Slot.gd" id="1_71e1a"]
 [node name="Slot" type="Control"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 3

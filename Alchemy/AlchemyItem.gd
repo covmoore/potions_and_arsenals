@@ -8,6 +8,7 @@ extends Area3D
 signal item_picked_up
 
 var world_instance = null
+
 var velocity = Vector3.ZERO
 var player_inventory = null
 var is_on_ground = false
@@ -17,7 +18,6 @@ func _ready():
 	velocity = Vector3.ZERO
 	self.name = item_name
 	item_picked_up.connect(_on_item_picked_up)
-	
 
 func _physics_process(delta):
 	if not is_on_ground:

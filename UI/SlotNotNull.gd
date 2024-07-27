@@ -12,7 +12,6 @@ func incrementCount():
 	var count = get_child(0)
 	count.text = str(int(count.text) + 1)
 
-
 func _on_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
