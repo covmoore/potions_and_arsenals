@@ -1,0 +1,7 @@
+<items>
+	<item>
+		<name>Silver</name>
+		<image_path>res://Alchemy/images/silver.png</image_path>
+		<mesh_path>res://Alchemy/meshes/silver.tres</mesh_path>
+	</item>
+</items>

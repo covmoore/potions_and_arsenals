@@ -1,9 +1,8 @@
 extends Area3D
 
-#simulate gravity
 @export var gravity_strength = -9.8
-@export var item_image_path = "res://Alchemy/images/deafult_alchemy_item.png"
-@export var item_name = "Alchemy Item"
+#@export var item_image_path = "res://Alchemy/images/deafult_alchemy_item.png"
+#@export var item_name = "Alchemy Item"
 
 signal item_picked_up
 
@@ -12,6 +11,31 @@ var world_instance = null
 var velocity = Vector3.ZERO
 var player_inventory = null
 var is_on_ground = false
+
+#Dynamic properties
+var item_name : String
+var item_image_path : String
+var item_mesh_path: String
+
+func initialize_properties(item_name: String, item_image_path: String, item_mesh_path: String):
+	self.item_name = item_name
+	self.item_image_path = item_image_path
+	self.item_mesh_path = item_mesh_path
+	
+	world_instance.debug_print(str(self.item_name))
+	world_instance.debug_print(str(self.item_image_path))
+	world_instance.debug_print(str(self.item_mesh_path))
+	
+	var mesh_instance = $MeshInstance3D
+	if mesh_instance:
+		if item_mesh_path != "":
+			var mesh = ResourceLoader.load(item_mesh_path)
+			if mesh:
+				mesh_instance.mesh = mesh
+		else:
+			world_instance.debug_print(str("Error: Failed to load mesh from path: " + item_mesh_path))
+	else:
+		world_instance.debug_print(str("Error: MeshInstance3D node not found or item_mesh_path is empty."))
 
 func _ready():
 	world_instance = get_tree().get_root().get_node("World")
