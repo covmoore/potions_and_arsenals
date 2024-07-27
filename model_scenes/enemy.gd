@@ -11,11 +11,13 @@ var player = null
 @onready var nav_agent = $NavigationAgent3D
 @onready var collider = $CollisionShape3D
 @onready var world = $".."
+@onready var alchemy_item_manager_instance = $"../AlchemyItemManager"
 
 signal enemy_died
 
 func _ready():
 	pass
+	#alchemy_item_manager_instance = get_tree().get_root().get_node("AlchemyItemManager")
 	
 func _process(delta):
 	if world.game_difficulty != world.DIFFICULTY.PEACEFUL && player != null:
@@ -38,10 +40,17 @@ func hit(dmg):
 	health -= dmg
 	if(health <= 0):
 		emit_signal("enemy_died")
-		var alchemyItem = ResourceLoader.load("res://scenes/alchemy_item.tscn")
-		if alchemyItem:
-			var alchemy_item_instance = alchemyItem.instantiate()
+		var alchemy_item_scene = ResourceLoader.load("res://scenes/alchemy_item.tscn")
+		if alchemy_item_scene:
+			var random_item = alchemy_item_manager_instance.get_random_item()
+			var item_name = random_item['name']
+			var item_image_path = random_item['image_path']
+			var item_mesh_path = random_item['mesh_path']
+			
+			var alchemy_item_instance = alchemy_item_scene.instantiate()
 			world.add_child(alchemy_item_instance)
+			# Initialize the alchemy item with the parameters from random_item
+			alchemy_item_instance.initialize_properties(item_name, item_image_path, item_mesh_path)
 			alchemy_item_instance.global_transform.origin = global_transform.origin
 		queue_free()
 
