@@ -1,5 +1,6 @@
 extends Node
 
+var rngTree
 @onready var alchemy_data = []
 
 var world_instance = null
@@ -7,6 +8,7 @@ var world_instance = null
 func _ready():
 	# Use a deferred call to ensure the node is properly initialized
 	call_deferred("_initialize")
+	rngTree = RngSearchTree.new()
 
 func _initialize():
 	alchemy_data = load_xml("res://Alchemy/AlchemyItems.xml")
