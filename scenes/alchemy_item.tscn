@@ -1,12 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://imaoxsuun17a"]
+[gd_scene load_steps=4 format=3 uid="uid://imaoxsuun17a"]
 
 [ext_resource type="Script" path="res://Alchemy/AlchemyItem.gd" id="1_mp640"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_dm4ml"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_ii2mp"]
-radius = 0.25
-height = 0.5
+[sub_resource type="SphereShape3D" id="SphereShape3D_6sd7t"]
 
 [sub_resource type="Skin" id="Skin_lofki"]
 
@@ -15,10 +11,9 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 script = ExtResource("1_mp640")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_dm4ml")
+shape = SubResource("SphereShape3D_6sd7t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_ii2mp")
 skin = SubResource("Skin_lofki")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

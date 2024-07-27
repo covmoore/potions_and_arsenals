@@ -1,5 +1,11 @@
 <items>
 	<item>
+		<name>Blade of Grass</name>
+		<image_path>res://Alchemy/images/blade_of_grass.png</image_path>
+		<collider_path>res://Alchemy/colliders/sphere.tres</collider_path>
+		<mesh_path>res://Alchemy/meshes/blade_of_grass.tres</mesh_path>
+	</item>
+	<item>
 		<name>Silver</name>
 		<image_path>res://Alchemy/images/silver.png</image_path>
 		<collider_path>res://Alchemy/colliders/sphere.tres</collider_path>
