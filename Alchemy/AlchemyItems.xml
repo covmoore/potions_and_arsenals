@@ -17,4 +17,10 @@
 		<collider_path>res://Alchemy/colliders/cylinder.tres</collider_path>
 		<mesh_path>res://Alchemy/meshes/hourglass.tres</mesh_path>
 	</item>
+	<item>
+		<name>Diamond</name>
+		<image_path>res://Alchemy/images/diamond.png</image_path>
+		<collider_path>res://Alchemy/colliders/box.tres</collider_path>
+		<mesh_path>res://Alchemy/meshes/diamond.tres</mesh_path>
+	</item>
 </items>

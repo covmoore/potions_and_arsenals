@@ -51,6 +51,15 @@ func initialize_properties(item_name: String, item_image_path: String, item_coll
 					mesh_instance.transform.origin = Vector3(0, .5, 0)
 					var scaled_basis = mesh_instance.transform.basis.scaled(Vector3(0.25, 0.25, 0.25))
 					mesh_instance.transform.basis = scaled_basis
+				elif item_name == "Diamond":
+					var rotation_degrees = Vector3(180, 0, 0)
+					var rotation_radians = rotation_degrees * deg_to_rad(1.0)
+					mesh_instance.transform.basis = Basis().rotated(
+						Vector3(1, 0, 0), rotation_radians.x) * Basis().rotated(Vector3(0, 1, 0), 
+						rotation_radians.y) * Basis().rotated(Vector3(0, 0, 1), 
+						rotation_radians.z)
+					var scaled_basis = mesh_instance.transform.basis.scaled(Vector3(0.25, 0.25, 0.25))
+					mesh_instance.transform.basis = scaled_basis
 		else:
 			world_instance.debug_print(str("Error: Failed to load mesh from path: " + item_mesh_path))
 	else:
