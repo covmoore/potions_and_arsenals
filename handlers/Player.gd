@@ -45,19 +45,14 @@ func _ready():
 func pause_game():
 	current_state = PLAYER_STATE.PAUSED
 	Engine.time_scale = 0
-	player_ui.paused_text.visible = true
+	player_ui.setPaused(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_mode = "visible"
-	
-	for child in player_ui.get_child(0).get_children():
-		if not child.is_in_group("PauseMenu"):
-			if child.has_method("set_visible"):
-				child.visible = false
 
 func resume_game():
 	current_state = PLAYER_STATE.ACTIVE
 	Engine.time_scale = 1
-	player_ui.paused_text.visible = false
+	player_ui.setPaused(false)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_mode = "captured"
 
