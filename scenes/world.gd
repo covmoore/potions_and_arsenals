@@ -64,7 +64,7 @@ func _process(delta):
 		
 		if enemy_count <= ENEMY_NUM_TRIGGER && enemy_spawn_state == SPAWN_STATE.NO_SPAWN:
 			if delay_created == false:
-				spawn_delay = rng.randi_range(0.5, 2)
+				spawn_delay = rng.randf_range(1, 3)
 				delay_created = true
 			enemy_spawn_state = SPAWN_STATE.SPAWN
 		if enemy_spawn_state == SPAWN_STATE.SPAWN && delay_created == true:

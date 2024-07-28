@@ -258,6 +258,40 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 19
 text = "Become a quitter"
 
+[node name="crossHair" type="Node" parent="PlayerUI/CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="PlayerUI/CanvasLayer/crossHair"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.531
+offset_left = -3.0
+offset_top = -5.0
+offset_right = 4.0
+offset_bottom = 4.91199
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel2" type="Panel" parent="PlayerUI/CanvasLayer/crossHair"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.531
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 5.91199
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.57079
+pivot_offset = Vector2(3.54877, 14.5907)
+mouse_filter = 2
+
 [node name="enemy_spawn_areas" type="Node3D" parent="."]
 
 [node name="EnemySpawnArea" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
@@ -270,3 +304,5 @@ transform = Transform3D(7.99568, 0, 0, 0, 2.1, 0, 0, 0, 4.59062, 11.5965, 0.0880
 transform = Transform3D(-1.85856, 0, -3.542, 0, 2.1, 0, 3.542, 0, -1.85856, 23.8161, 0.0880904, 10.7286)
 
 [connection signal="player_created" from="." to="PlayerUI" method="_on_world_player_created"]
+[connection signal="pressed" from="PlayerUI/CanvasLayer/tryAgain" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="PlayerUI/CanvasLayer/tryAgain" to="PlayerUI" method="_on_try_again_pressed"]
