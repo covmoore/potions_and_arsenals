@@ -1,38 +1,32 @@
 extends Control
 
-@onready var health_text = $CanvasLayer/healthTxt
-@onready var game_over_text = $CanvasLayer/gameOverTxt
 @onready var interact_text = $CanvasLayer/interactTxt
 @onready var inventory_ui = $CanvasLayer/Inventory
 @onready var alchemy_panel = $CanvasLayer/AlchemyPanel
-@onready var paused_text = $CanvasLayer/pauseTxt
-@onready var try_again_btn = $CanvasLayer/tryAgain
-@onready var quit_btn = $CanvasLayer/quit
 @onready var philsopher_table = $"../Map/Philosopher Table"
 @onready var player = null
 
+@onready var HUD = $CanvasLayer/HUD
+@onready var GameOverMenu = $CanvasLayer/GameOverMenu
+@onready var PauseMenu = $CanvasLayer/PauseMenu
+@onready var OptionsMenu = $CanvasLayer/OptionsMenu
+var menus
 signal alchemy_started
 
 func _ready():
-	paused_text.visible = false
-	game_over_text.visible = false
-	interact_text.visible = false
-	inventory_ui.visible = false
-	alchemy_panel.visible = false
-	try_again_btn.visible = false
-	quit_btn.visible = false
+	menus = [HUD, GameOverMenu, PauseMenu, OptionsMenu]
+	setPanel(HUD)
+	OptionsMenu.connect("closePanel", _on_options_closed)
 	alchemy_started.connect(_on_alchemy_started)
 
 func _on_player_player_died():
-	game_over_text.visible = true
-	try_again_btn.visible = true
-	quit_btn.visible = true
+	setPanel(GameOverMenu)
 
 func _on_player_player_hit(health):
-	health_text.text = "%1d" % health
+	HUD.setHealth(health)
 
 func _on_player_player_healed(health):
-	health_text.text = "%1d" % health
+	HUD.setHealth(health)
 
 func _input(event):
 	if event is InputEventKey:
@@ -70,3 +64,36 @@ func _on_world_player_created(player_path):
 
 func _on_try_again_pressed():
 	get_tree().reload_current_scene()
+
+func setPanel(panel):
+	for menu in menus:
+		if menu.name == panel.name:
+			menu.visible = true
+			menu.mouse_filter = MOUSE_FILTER_PASS
+		else:
+			menu.visible = false
+			menu.mouse_filter = MOUSE_FILTER_IGNORE
+
+func setPaused(x):
+	if x == true:
+		setPanel(PauseMenu)
+	else:
+		setPanel(HUD)
+
+func _on_options_closed():
+	setPanel(PauseMenu)
+
+func _on_continue_btn_pressed():
+	player.resume_game()
+
+
+func _on_options_btn_pressed():
+	setPanel(OptionsMenu)
+
+
+func _on_leave_game_btn_pressed():
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+
+
+func _on_quit_pressed():
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
