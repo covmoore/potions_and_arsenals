@@ -92,7 +92,6 @@ func _process(delta):
 func _on_enemy_enemy_died():
 	enemy_count -= 1
 	
-
 #Prints a message based on debug level
 func debug_print(msg, obnoxious_print:bool = false):
 	if debug_level == DEBUG_LEVEL.DEBUG:

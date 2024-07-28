@@ -5,6 +5,15 @@ var inventory = []
 func _ready():
 	for child in get_children():
 		inventory.append(child)
+	#TODO delete the following lines once philosopher table works
+	add_item("Hourglass", "res://Alchemy/images/hourglass.png")
+	add_item("Fairy Wings", "res://Alchemy/images/fairy_wings.png")
+
+func get_items() -> Array:
+	var items = []
+	for item in inventory:
+		items.append(item)
+	return items
 
 func add_item(item_name, item_image):
 	var item_added = false

@@ -141,7 +141,7 @@ script = ExtResource("5_6kfod")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI"]
 
-[node name="healthTxt" type="Label" parent="PlayerUI/CanvasLayer" groups=["PlayerActiveUI"]]
+[node name="healthTxt" type="Label" parent="PlayerUI/CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -222,7 +222,7 @@ script = ExtResource("6_7giy0")
 [node name="InventorySlot" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
 [node name="InventorySlot3" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
@@ -336,123 +336,71 @@ pivot_offset = Vector2(3.54877, 14.5907)
 mouse_filter = 2
 
 [node name="AlchemyPanel" type="PanelContainer" parent="PlayerUI/CanvasLayer"]
-custom_minimum_size = Vector2(900, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -166.0
+offset_left = -400.0
+offset_top = -200.0
 offset_right = 400.0
-offset_bottom = 166.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InventoryMarginContainer" type="MarginContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel"]
+[node name="Inventory" type="GridContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/margin_left = 0
-
-[node name="InventoryHBoxContainer" type="HBoxContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-alignment = 1
-
-[node name="InventoryVBoxContainer" type="VBoxContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Inventory" type="GridContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer"]
-layout_mode = 2
 size_flags_vertical = 4
 columns = 4
 
-[node name="InventorySlot" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot3" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot3" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot4" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot4" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot5" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot5" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot6" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot6" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot7" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot7" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot8" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot8" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot9" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot9" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot10" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot10" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot11" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot11" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot12" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot12" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot13" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot13" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot14" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot14" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot15" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot15" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot16" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot16" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
-
-[node name="IngredientsMarginContainer" type="MarginContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="IngredientsHBoxContainer" type="HBoxContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer"]
-layout_mode = 2
-
-[node name="Ingredients" type="HBoxContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="IngredientSlot" parent="PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer/Ingredients" instance=ExtResource("6_8582x")]
-layout_mode = 2
-
-[node name="IngredientSlot2" parent="PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer/Ingredients" instance=ExtResource("6_8582x")]
-layout_mode = 2
-
-[node name="IngredientSlot3" parent="PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer/Ingredients" instance=ExtResource("6_8582x")]
-layout_mode = 2
-
-[node name="ButtonMargin" type="MarginContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="Button" type="Button" parent="PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer/ButtonMargin"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-size_flags_vertical = 4
-text = "CRAFT"
-
-[node name="IngredientSlot" parent="PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer" instance=ExtResource("6_8582x")]
-layout_mode = 2
-size_flags_vertical = 4
 
 [node name="enemy_spawn_areas" type="Node3D" parent="."]
 
@@ -470,5 +418,3 @@ transform = Transform3D(-1.85856, 0, -3.542, 0, 2.1, 0, 3.542, 0, -1.85856, 23.8
 [connection signal="body_exited" from="Map/Philosopher Table" to="Map/Philosopher Table" method="_on_body_exited"]
 [connection signal="pressed" from="PlayerUI/CanvasLayer/tryAgain" to="." method="_on_try_again_pressed"]
 [connection signal="pressed" from="PlayerUI/CanvasLayer/tryAgain" to="PlayerUI" method="_on_try_again_pressed"]
-
-[editable path="PlayerUI/CanvasLayer/Inventory/InventorySlot"]
