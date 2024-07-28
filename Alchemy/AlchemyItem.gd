@@ -1,8 +1,6 @@
 extends Area3D
 
 @export var gravity_strength = -9.8
-#@export var item_image_path = "res://Alchemy/images/deafult_alchemy_item.png"
-#@export var item_name = "Alchemy Item"
 
 signal item_picked_up
 
@@ -11,6 +9,7 @@ var world_instance = null
 var velocity = Vector3.ZERO
 var player_inventory = null
 var is_on_ground = false
+var elapsed_time: float = 0.0
 
 #Dynamic properties
 var item_name : String
@@ -62,12 +61,33 @@ func initialize_properties(item_name: String, item_image_path: String, item_coll
 				if item_name == "Hourglass":
 					mesh_instance.transform.origin = Vector3(0, .5, 0)
 					scale_helper(Vector3(0.25, 0.25, 0.25), mesh_instance)
+				elif item_name == "Sea Shell":
+					mesh_instance.transform.origin = Vector3(.33,-.5,0)
+					rotation_helper(Vector3(90,-90,0), mesh_instance)
+					scale_helper(Vector3(0.05,0.05,0.05), mesh_instance)
+				elif item_name == "Sugar Water":
+					mesh_instance.transform.origin = Vector3(0,0.5,0)
+					rotation_helper(Vector3(90,0,0), mesh_instance)
+					scale_helper(Vector3(0.125, 0.125, 0.125), mesh_instance)
+				elif item_name == "Amethyst":
+					rotation_helper(Vector3(90,0,0), mesh_instance)
+					scale_helper(Vector3(0.33, 0.33, 0.33), mesh_instance)
 				elif item_name == "Diamond":
 					rotation_helper(Vector3(180,0,0), mesh_instance)
 					scale_helper(Vector3(0.25, 0.25, 0.25), mesh_instance)
+				elif item_name == "Fairy Wings":
+					rotation_helper(Vector3(90,90,0), mesh_instance)
+					scale_helper(Vector3(0.075, 1, 0.075), mesh_instance)
 				elif item_name == "Burning Flower":
 					rotation_helper(Vector3(90,0,0), mesh_instance)
-					scale_helper(Vector3(.9,.129,.129), mesh_instance) 
+					scale_helper(Vector3(.9,.129,.129), mesh_instance)
+				elif item_name == "Pegasus Horn":
+					scale_helper(Vector3(0.025,0.025,0.025), mesh_instance)
+				elif item_name == "Toxic Sludge":
+					mesh_instance.transform.origin = Vector3(0,-0.75,0)
+				elif item_name == "Ether Crystal":
+					rotation_helper(Vector3(90,0,0), mesh_instance)
+					scale_helper(Vector3(.5,.5,.5), mesh_instance)
 		else:
 			world_instance.debug_print(str("Error: Failed to load mesh from path: " + item_mesh_path))
 	else:
@@ -78,6 +98,11 @@ func _ready():
 	velocity = Vector3.ZERO
 	self.name = item_name
 	item_picked_up.connect(_on_item_picked_up)
+	
+func _process(delta):
+	elapsed_time += delta
+	if $MeshInstance3D.material_override is ShaderMaterial and item_name in ["Pegasus Horn", "Void Dust", "Ether Crystal", "Demon Blood"]:
+			$MeshInstance3D.material_override.set_shader_param("time", elapsed_time)
 
 func _physics_process(delta):
 	if not is_on_ground:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Alchemy/AlchemyItem.gd" id="1_mp640"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_elvra"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_peg0v"]
 
 [sub_resource type="Skin" id="Skin_lofki"]
 
@@ -11,7 +11,7 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 script = ExtResource("1_mp640")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_elvra")
+shape = SubResource("BoxShape3D_peg0v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 skin = SubResource("Skin_lofki")
