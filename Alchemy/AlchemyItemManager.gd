@@ -3,7 +3,7 @@ extends Node
 
 var rngTree
 @onready var alchemy_data = {}
-var drop_probability = .20
+var drop_probability = .10
 var last_item_bound = 0
 const RNG_RANGE = 1000.00
 var world_instance = null
@@ -80,7 +80,7 @@ func get_random_item(willDrop = false) -> Dictionary:
 		random_idx = rng.randf_range(1, last_item_bound)
 	random_idx = rng.randf_range(1, RNG_RANGE)
 	var item = rngTree.searchItem(random_idx).name
-	print("RNG Number %4.2f got %s" % [random_idx, item])
+	#print("RNG Number %4.2f got %s" % [random_idx, item])
 	return alchemy_data[item]
 
 func populate_rng_tree(data):

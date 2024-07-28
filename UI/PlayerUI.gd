@@ -39,13 +39,11 @@ func _input(event):
 				player.current_state = player.PLAYER_STATE.ACTIVE
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-
 func _on_world_player_created(player_path):
 	player = get_node(player_path)
 	player.connect("player_hit", _on_player_player_hit)
 	player.connect("player_died", _on_player_player_died)
 	player.connect("player_healed", _on_player_player_healed)
-
 
 func _on_try_again_pressed():
 	get_tree().reload_current_scene()
