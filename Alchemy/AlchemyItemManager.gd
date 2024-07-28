@@ -14,17 +14,19 @@ func _ready():
 	rngTree = RngSearchTree.new()
 
 func _initialize():
-	alchemy_data = load_xml("res://Alchemy/AlchemyItems.xml")
-	for name in alchemy_data.keys():
-		print("%s's bound: %4.2f" % [name, alchemy_data[name].upperBound])
-	populate_rng_tree(alchemy_data)
-
 	# Ensure the world instance is properly retrieved
 	world_instance = get_tree().get_root().get_node("World")
+	alchemy_data = load_xml("res://Alchemy/AlchemyItems.xml")
+	
 	if world_instance == null:
 		print("World node not found!")
 	else:
-		world_instance.debug_print(alchemy_data)
+		world_instance.debug_print(str(alchemy_data), true)
+		
+	for name in alchemy_data.keys():
+		world_instance.debug_print(str("%s's bound: %4.2f" % [name, alchemy_data[name].upperBound]), true)
+	populate_rng_tree(alchemy_data)
+
 
 func load_xml(file_path: String) -> Dictionary:
 	var data = {}
