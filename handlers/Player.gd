@@ -13,6 +13,7 @@ const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
 var max_health = 5
 var isAlive = true
+var isByPhilsopherTable = false
 var health = max_health
 var mouse_mode = "captured"
 var current_state = PLAYER_STATE.ACTIVE
@@ -47,8 +48,11 @@ func pause_game():
 	player_ui.paused_text.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_mode = "visible"
-	if player_ui.inventory_ui.visible:
-		player_ui.inventory_ui.visible = false
+	
+	for child in player_ui.get_child(0).get_children():
+		if not child.is_in_group("PauseMenu"):
+			if child.has_method("set_visible"):
+				child.visible = false
 
 func resume_game():
 	current_state = PLAYER_STATE.ACTIVE
