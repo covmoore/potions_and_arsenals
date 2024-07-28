@@ -93,3 +93,7 @@ func _on_options_btn_pressed():
 
 func _on_leave_game_btn_pressed():
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+
+
+func _on_quit_pressed():
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
