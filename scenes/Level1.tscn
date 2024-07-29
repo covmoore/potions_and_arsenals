@@ -372,7 +372,7 @@ columns = 4
 [node name="InventorySlot" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot2" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
 [node name="InventorySlot3" parent="PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory" instance=ExtResource("6_8582x")]
@@ -450,7 +450,7 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "CRAFT"
 
-[node name="IngredientSlot" parent="PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer" instance=ExtResource("6_8582x")]
+[node name="FinalProductSlot" parent="PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer" instance=ExtResource("6_8582x")]
 layout_mode = 2
 size_flags_vertical = 4
 
