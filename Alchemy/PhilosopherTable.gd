@@ -4,6 +4,7 @@ extends Area3D
 @onready var playerUI = $"../../PlayerUI"
 @onready var playerInventory = $"../../PlayerUI/CanvasLayer/Inventory"
 @onready var philosopherTableInventory = $"../../PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory"
+@onready var philosopherTableIngredients = $"../../PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer/Ingredients"
 
 var player = null
 
@@ -50,3 +51,15 @@ func setup_philosopher_table():
 	
 	var player_items = playerInventory.get_items()
 	match_player_inevntory(player_items)
+
+func end_alchemy_session():
+	#wipe the ingredients if any are left in ingredients table
+	for slot in philosopherTableIngredients.get_children():
+		if not slot.name.begins_with("Ingredient"):
+			var nil_slot = ResourceLoader.load("res://scenes/slot.tscn")
+			if nil_slot:
+				var nil_slot_instance = nil_slot.instantiate()
+				philosopherTableIngredients.remove_child(slot)
+				philosopherTableIngredients.add_child(nil_slot_instance)
+				nil_slot_instance.name = "IngredientSlot"
+				slot.queue_free()

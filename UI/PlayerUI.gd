@@ -12,6 +12,7 @@ extends Control
 @onready var player = null
 
 signal alchemy_started
+signal alchemy_ended
 
 func _ready():
 	paused_text.visible = false
@@ -22,6 +23,7 @@ func _ready():
 	try_again_btn.visible = false
 	quit_btn.visible = false
 	alchemy_started.connect(_on_alchemy_started)
+	alchemy_ended.connect(_on_alchemy_ended)
 
 func _on_player_player_died():
 	game_over_text.visible = true
@@ -56,11 +58,15 @@ func _input(event):
 					player.current_state = player.PLAYER_STATE.ALCHEMY
 					Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				else:
+					emit_signal("alchemy_ended")
 					player.current_state = player.PLAYER_STATE.ACTIVE
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_alchemy_started():
 	philsopher_table.setup_philosopher_table()
+	
+func _on_alchemy_ended():
+	philsopher_table.end_alchemy_session()
 
 func _on_world_player_created(player_path):
 	player = get_node(player_path)
