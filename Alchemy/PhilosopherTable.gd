@@ -1,8 +1,8 @@
 extends Area3D
 
-@onready var world = $"../.."
-@onready var playerUI = $"../../PlayerUI"
-@onready var playerInventory = $"../../PlayerUI/CanvasLayer/Inventory"
+@onready var world = $"../../.."
+@onready var playerUI = $"../../../PlayerUI"
+@onready var playerInventory = $"../../../PlayerUI/CanvasLayer/Inventory"
 
 var player = null
 
@@ -25,3 +25,4 @@ func _on_body_exited(body):
 func setup_philosopher_table():
 	#TODO setup philosopher table with current player inventory
 	print("setup the table")
+

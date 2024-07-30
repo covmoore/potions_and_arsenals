@@ -3,7 +3,7 @@ extends Control
 @onready var interact_text = $CanvasLayer/interactTxt
 @onready var inventory_ui = $CanvasLayer/Inventory
 @onready var alchemy_panel = $CanvasLayer/AlchemyPanel
-@onready var philsopher_table = $"../Map/Philosopher Table"
+@onready var philsopher_table = $"../Map/AlchemyTable/Area3D"
 @onready var player = null
 
 @onready var HUD = $CanvasLayer/HUD

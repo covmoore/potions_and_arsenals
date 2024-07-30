@@ -21,6 +21,7 @@ material = SubResource("StandardMaterial3D_eti20")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+floor_snap_length = 0.2
 script = ExtResource("1_1egur")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -52,3 +53,7 @@ mesh = SubResource("SphereMesh_24ban")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Head/MeshInstance3D"]
 transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, -0.287545, 0.157747, -0.345994)
 mesh = SubResource("SphereMesh_24ban")
+
+[node name="StairsBelowRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, -0.5, 0)
