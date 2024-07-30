@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://fwc4ht2fxejh"]
+[gd_scene load_steps=6 format=3 uid="uid://fwc4ht2fxejh"]
 
 [ext_resource type="Script" path="res://UI/MainMenu/MainMenu.gd" id="1_duqhf"]
+[ext_resource type="AudioStream" uid="uid://cpdm5jroocejl" path="res://audio/music/main_theme.wav" id="2_qemx0"]
+[ext_resource type="PackedScene" uid="uid://cf68ucf56tjp1" path="res://UI/options_menu.tscn" id="3_r0ls2"]
+
+[sub_resource type="SystemFont" id="SystemFont_4qv8l"]
+
+[sub_resource type="Theme" id="Theme_f0rnx"]
+default_font = SubResource("SystemFont_4qv8l")
+default_font_size = 25
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,27 +19,85 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_duqhf")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qemx0")
+autoplay = true
+bus = &"Music"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1, 2)
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="MainMenu" type="Control" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainMenu"]
+layout_mode = 2
+offset_right = 1128.0
+offset_bottom = 624.0
+theme_override_constants/separation = 20
+
+[node name="Separator" type="Control" parent="MarginContainer/MainMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Potions & Arsenals"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MainMenu"]
+layout_mode = 2
+offset_right = 1128.0
+offset_bottom = 624.0
+pivot_offset = Vector2(2087, 328)
+theme = SubResource("Theme_f0rnx")
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Separator2" type="Control" parent="MarginContainer/MainMenu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/MainMenu/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "Play
 "
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="MarginContainer/MainMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/MainMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="OptionsMenu" parent="MarginContainer" instance=ExtResource("3_r0ls2")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/MainMenu/HBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/MainMenu/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/MainMenu/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

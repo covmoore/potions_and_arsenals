@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Alchemy/PhilosopherTable.gd" id="4_og8h7"]
 [ext_resource type="PackedScene" uid="uid://5wpla3btmto1" path="res://model_scenes/enemy_spawn_area.tscn" id="5_1qsfv"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
-[ext_resource type="PackedScene" path="res://UI/options_menu.tscn" id="6_0xhtr"]
+[ext_resource type="PackedScene" uid="uid://cf68ucf56tjp1" path="res://UI/options_menu.tscn" id="6_0xhtr"]
 [ext_resource type="Script" path="res://UI/Inventory.gd" id="6_7giy0"]
 [ext_resource type="PackedScene" uid="uid://c5cfety2533lh" path="res://scenes/slot.tscn" id="6_8582x"]
 [ext_resource type="PackedScene" uid="uid://cdnceum0f6rfo" path="res://assets/map/big_portal.fbx" id="6_psx8o"]
@@ -231,6 +231,7 @@ shape = SubResource("BoxShape3D_5qdlf")
 transform = Transform3D(-0.586015, 0, 0.12879, 0, 0.6, 0, -0.12879, 0, -0.586015, -13.8938, 2.52686, -5.52192)
 
 [node name="Area3D" type="Area3D" parent="Map/AlchemyTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("4_og8h7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/AlchemyTable/Area3D"]
@@ -707,6 +708,7 @@ transform = Transform3D(5.85892, 0, 0.1927, 0, 0.57262, 0, -0.529607, 0, 2.13179
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_38n0e")
 autoplay = true
+bus = &"Music"
 
 [node name="lights" type="Node3D" parent="."]
 
