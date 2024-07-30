@@ -12,6 +12,8 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
 var max_health = 5
+
+var original_camera_position = Vector3.ZERO
 var isAlive = true
 var isByPhilsopherTable = false
 var health = max_health
@@ -33,12 +35,14 @@ signal player_healed
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var gun = $Head/Camera3D/TemHandGun
 @onready var gun_anim = $Head/Camera3D/TemHandGun/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/TemHandGun/RayCast3D
 @onready var player_ui = $"../PlayerUI"
 @onready var player_inventory = $"../PlayerUI/CanvasLayer/Inventory"
 
 func _ready():
+	camera.current = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_state = PLAYER_STATE.ACTIVE
 

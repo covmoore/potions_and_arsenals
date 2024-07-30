@@ -4,7 +4,7 @@ extends Control
 @onready var game_over_text = $CanvasLayer/gameOverTxt
 @onready var interact_text = $CanvasLayer/interactTxt
 @onready var inventory_ui = $CanvasLayer/Inventory
-@onready var alchemy_panel = $CanvasLayer/AlchemyPanel
+@onready var philosopher_panel = $CanvasLayer/Philosopher
 @onready var paused_text = $CanvasLayer/pauseTxt
 @onready var try_again_btn = $CanvasLayer/tryAgain
 @onready var quit_btn = $CanvasLayer/quit
@@ -19,11 +19,21 @@ func _ready():
 	game_over_text.visible = false
 	interact_text.visible = false
 	inventory_ui.visible = false
-	alchemy_panel.visible = false
+	philosopher_panel.visible = false
 	try_again_btn.visible = false
 	quit_btn.visible = false
 	alchemy_started.connect(_on_alchemy_started)
 	alchemy_ended.connect(_on_alchemy_ended)
+	
+
+func set_active_camera(camera_name):
+	var cameras = [player.camera, philsopher_table.philosopherCamera]
+	if camera_name == "player":
+		player.camera.current = true
+		philsopher_table.philosopherCamera.current = false
+	else:
+		player.camera.current = false
+		philsopher_table.philosopherCamera.current = true
 
 func _on_player_player_died():
 	game_over_text.visible = true
@@ -51,21 +61,25 @@ func _input(event):
 		elif event.pressed and event.physical_keycode == KEY_E and (player.current_state == player.PLAYER_STATE.ACTIVE
 																	or player.current_state == player.PLAYER_STATE.ALCHEMY):
 			if player.isByPhilsopherTable:
-				alchemy_panel.visible = not alchemy_panel.visible
-				if alchemy_panel.visible:
+				philosopher_panel.visible = not philosopher_panel.visible
+				if philosopher_panel.visible:
 					emit_signal("alchemy_started")
-					interact_text.visible = false
-					player.current_state = player.PLAYER_STATE.ALCHEMY
-					Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				else:
 					emit_signal("alchemy_ended")
-					player.current_state = player.PLAYER_STATE.ACTIVE
-					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_alchemy_started():
+	player.current_state = player.PLAYER_STATE.ALCHEMY
+	interact_text.visible = false
+	player.gun.visible = false
+	set_active_camera("philosopher")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	philsopher_table.setup_philosopher_table()
 	
 func _on_alchemy_ended():
+	player.current_state = player.PLAYER_STATE.ACTIVE
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	player.gun.visible = true
+	set_active_camera("player")
 	philsopher_table.end_alchemy_session()
 
 func _on_world_player_created(player_path):

@@ -3,10 +3,13 @@ extends Area3D
 @onready var world = $"../.."
 @onready var playerUI = $"../../PlayerUI"
 @onready var playerInventory = $"../../PlayerUI/CanvasLayer/Inventory"
-@onready var philosopherTableInventory = $"../../PlayerUI/CanvasLayer/AlchemyPanel/InventoryMarginContainer/InventoryHBoxContainer/InventoryVBoxContainer/Inventory"
-@onready var philosopherTableIngredients = $"../../PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer/Ingredients"
-
+@onready var philosopherTableInventory = $"../../PlayerUI/CanvasLayer/Philosopher/PhilosopherInventory/Inventory"
+#@onready var philosopherTableIngredients = $"../../PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer/Ingredients"
+@onready var philosopherCamera = $PhilosopherCamera
 var player = null
+
+func _ready():
+	philosopherCamera.current = false
 
 func _on_body_entered(body):
 	if body.name == "Player":
@@ -22,7 +25,7 @@ func _on_body_exited(body):
 				player.current_state = player.PLAYER_STATE.ACTIVE
 				world.debug_print(player.current_state)
 		playerUI.interact_text.visible = false
-		playerUI.alchemy_panel.visible = false
+		playerUI.philosopher_panel.visible = false
 		
 func match_player_inevntory(items: Array):
 	for item in items:
@@ -53,13 +56,14 @@ func setup_philosopher_table():
 	match_player_inevntory(player_items)
 
 func end_alchemy_session():
+	pass
 	#wipe the ingredients if any are left in ingredients table
-	for slot in philosopherTableIngredients.get_children():
-		if not slot.name.begins_with("Ingredient"):
-			var nil_slot = ResourceLoader.load("res://scenes/slot.tscn")
-			if nil_slot:
-				var nil_slot_instance = nil_slot.instantiate()
-				philosopherTableIngredients.remove_child(slot)
-				philosopherTableIngredients.add_child(nil_slot_instance)
-				nil_slot_instance.name = "IngredientSlot"
-				slot.queue_free()
+	#for slot in philosopherTableIngredients.get_children():
+		#if not slot.name.begins_with("Ingredient"):
+			#var nil_slot = ResourceLoader.load("res://scenes/slot.tscn")
+			#if nil_slot:
+				#var nil_slot_instance = nil_slot.instantiate()
+				#philosopherTableIngredients.remove_child(slot)
+				#philosopherTableIngredients.add_child(nil_slot_instance)
+				#nil_slot_instance.name = "IngredientSlot"
+				#slot.queue_free()
