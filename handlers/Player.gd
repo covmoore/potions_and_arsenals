@@ -16,7 +16,6 @@ var max_health = 5
 var original_camera_position = Vector3.ZERO
 var isAlive = true
 var isByPhilsopherTable = false
-var isByPhilsopherTable = false
 var health = max_health
 var mouse_mode = "captured"
 var current_state = PLAYER_STATE.ACTIVE

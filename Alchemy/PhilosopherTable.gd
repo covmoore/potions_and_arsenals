@@ -1,32 +1,20 @@
-extends Area3D
+extends Node3D
 
 @onready var world = $"../.."
 @onready var playerUI = $"../../PlayerUI"
 @onready var playerInventory = $"../../PlayerUI/CanvasLayer/Inventory"
-@onready var philosopherTableInventory = $"../../PlayerUI/CanvasLayer/Philosopher/PhilosopherInventory/Inventory"
-#@onready var philosopherTableIngredients = $"../../PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer/Ingredients"
+@onready var philosopherTableInventory = $"../../PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory"
 @onready var philosopherCamera = $PhilosopherCamera
 var player = null
 
 func _ready():
-	philosopherCamera.current = false
+	world.debug_print("Trying to access philosopherCamera", true)
+	if philosopherCamera:
+		world.debug_print("philosopherCamera found")
+		philosopherCamera.current = false
+	else:
+		world.debug_print("philosopherCamera not found")
 
-func _on_body_entered(body):
-	if body.name == "Player":
-		player = body
-		player.isByPhilsopherTable = true
-		playerUI.interact_text.visible = true
-
-func _on_body_exited(body):
-	if body.name == "Player":
-		if player != null:
-			player.isByPhilsopherTable = false
-			if player.current_state == player.PLAYER_STATE.ALCHEMY:
-				player.current_state = player.PLAYER_STATE.ACTIVE
-				world.debug_print(player.current_state)
-		playerUI.interact_text.visible = false
-		playerUI.philosopher_panel.visible = false
-		
 func match_player_inevntory(items: Array):
 	for item in items:
 		if item.get_child(0).name == "Null Item":
@@ -67,3 +55,20 @@ func end_alchemy_session():
 				#philosopherTableIngredients.add_child(nil_slot_instance)
 				#nil_slot_instance.name = "IngredientSlot"
 				#slot.queue_free()
+
+
+func _on_area_3d_body_entered(body):
+	if body.name == "Player":
+		player = body
+		player.isByPhilsopherTable = true
+		playerUI.interact_text.visible = true
+
+
+func _on_area_3d_body_exited(body):
+	if body.name == "Player":
+		if player != null:
+			player.isByPhilsopherTable = false
+			if player.current_state == player.PLAYER_STATE.ALCHEMY:
+				player.current_state = player.PLAYER_STATE.ACTIVE
+				world.debug_print(player.current_state)
+		playerUI.interact_text.visible = false

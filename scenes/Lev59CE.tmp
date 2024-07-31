@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=44 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
 [ext_resource type="PackedScene" uid="uid://cty3y68hwt6jn" path="res://model_scenes/player_spawn_point.tscn" id="2_c2mix"]
@@ -105,8 +105,6 @@ material = SubResource("StandardMaterial3D_ugpae")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_au5dt"]
 size = Vector3(2.95044, 2.24005, 5.34705)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ilbb4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0smwi"]
 material = ExtResource("4_gnylx")
@@ -231,9 +229,9 @@ shape = SubResource("BoxShape3D_5qdlf")
 
 [node name="PhilosopherTable" parent="Map" instance=ExtResource("9_7ca5p")]
 transform = Transform3D(-0.586015, 0, 0.12879, 0, 0.6, 0, -0.12879, 0, -0.586015, -13.8938, 2.52686, -5.52192)
-script = ExtResource("4_og8h7")
 
 [node name="Area3D" type="Area3D" parent="Map/PhilosopherTable"]
+script = ExtResource("4_og8h7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/PhilosopherTable/Area3D"]
 transform = Transform3D(0.999999, 0, -2.83122e-07, 0, 1.00001, 0, 2.83122e-07, 0, 0.999999, 0.136599, 0.620026, -0.003232)
@@ -241,33 +239,6 @@ shape = SubResource("BoxShape3D_au5dt")
 
 [node name="PhilosopherCamera" type="Camera3D" parent="Map/PhilosopherTable"]
 transform = Transform3D(-1.78814e-07, -0.95596, 1.36525, 0, 1.36525, 0.955961, -1.66667, 8.9407e-08, -1.19209e-07, 4, 3.75, -0.125)
-
-[node name="Ingredients" type="Node3D" parent="Map/PhilosopherTable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="IngredientCollider" type="CollisionShape3D" parent="Map/PhilosopherTable/Ingredients"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.75, 0.407, 1.5)
-shape = SubResource("BoxShape3D_ilbb4")
-
-[node name="IngredientMeshEmpty" type="MeshInstance3D" parent="Map/PhilosopherTable/Ingredients/IngredientCollider"]
-transform = Transform3D(1, 0, 2.98023e-07, 0, 1, 0, -2.98023e-07, 0, 1, 0, 0, 0)
-skeleton = NodePath("../../..")
-
-[node name="IngredientCollider2" type="CollisionShape3D" parent="Map/PhilosopherTable/Ingredients"]
-transform = Transform3D(0.5, 0, 1.11759e-07, 0, 0.5, 0, -1.11759e-07, 0, 0.5, 0.75, 0.407, 0.5)
-shape = SubResource("BoxShape3D_ilbb4")
-
-[node name="IngredientMeshEmpty" type="MeshInstance3D" parent="Map/PhilosopherTable/Ingredients/IngredientCollider2"]
-transform = Transform3D(1, 0, 2.98023e-07, 0, 1, 0, -2.98023e-07, 0, 1, 0, 0, 0)
-skeleton = NodePath("../../..")
-
-[node name="IngredientCollider3" type="CollisionShape3D" parent="Map/PhilosopherTable/Ingredients"]
-transform = Transform3D(0.5, 0, 1.11759e-07, 0, 0.5, 0, -1.11759e-07, 0, 0.5, 0.75, 0.407, -0.5)
-shape = SubResource("BoxShape3D_ilbb4")
-
-[node name="IngredientMeshEmpty" type="MeshInstance3D" parent="Map/PhilosopherTable/Ingredients/IngredientCollider3"]
-transform = Transform3D(1, 0, 2.98023e-07, 0, 1, 0, -2.98023e-07, 0, 1, 0, 0, 0)
-skeleton = NodePath("../../..")
 
 [node name="ceiling" type="Node3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, -87.9205, 0, 1, -3.84312e-06, 0, 0, 0, 72.3733, 0.146958, 33.1019, -0.275635)
@@ -768,8 +739,8 @@ omni_attenuation = 0.307786
 [node name="LightmapGI" type="LightmapGI" parent="lights"]
 
 [connection signal="player_created" from="." to="PlayerUI" method="_on_world_player_created"]
-[connection signal="body_entered" from="Map/PhilosopherTable/Area3D" to="Map/PhilosopherTable" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Map/PhilosopherTable/Area3D" to="Map/PhilosopherTable" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Map/PhilosopherTable/Area3D" to="Map/PhilosopherTable/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Map/PhilosopherTable/Area3D" to="Map/PhilosopherTable/Area3D" method="_on_body_exited"]
 [connection signal="pressed" from="PlayerUI/CanvasLayer/GameOverMenu/tryAgain" to="." method="_on_try_again_pressed"]
 [connection signal="pressed" from="PlayerUI/CanvasLayer/GameOverMenu/tryAgain" to="PlayerUI" method="_on_try_again_pressed"]
 [connection signal="pressed" from="PlayerUI/CanvasLayer/GameOverMenu/quit" to="PlayerUI" method="_on_quit_pressed"]
