@@ -99,6 +99,14 @@ func get_item_mesh_path(item) -> String:
 	var item_name = texture_path.split("/")[4].split(".")[0]
 	var mesh_path_suffix = ".tres"
 	return str(mesh_path_prefix + item_name + mesh_path_suffix)
+	
+func can_add_item(item_name, item_count, slots) -> bool:
+	#count how many of current item on table
+	var count = 0
+	for slot in slots:
+		if slot.get_child(0).name == item_name:
+			count += 1
+	return count < item_count
 
 func handle_inventory_click():
 	#check if empty ingredients slot on table
@@ -106,7 +114,11 @@ func handle_inventory_click():
 	for slot in ingredients_slots.get_children():
 		if slot.get_child(0).name == "IngredientMeshEmpty":
 			var item_mesh_path = get_item_mesh_path(self)
-			add_mesh_to_table(item_mesh_path, slot)
+			#check if player has enough in inventory to add item
+			var item_name = item_mesh_path.split("/")[4].split(".")[0]
+			var item_count = int(self.get_child(0).text)
+			if can_add_item(item_name, item_count, ingredients_slots.get_children()):
+				add_mesh_to_table(item_mesh_path, slot)
 			break
 	
 func handle_ingredients_click():

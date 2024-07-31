@@ -6,7 +6,7 @@ func _ready():
 	for child in get_children():
 		inventory.append(child)
 	#TODO delete the following lines once philosopher table works
-	add_item("Hourglass", "res://Alchemy/images/hourglass.png")
+	#add_item("Hourglass", "res://Alchemy/images/hourglass.png")
 	#add_item("Hourglass", "res://Alchemy/images/hourglass.png")
 	#add_item("Fairy Wings", "res://Alchemy/images/fairy_wings.png")
 

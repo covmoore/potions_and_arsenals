@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/MainMenu/MainMenu.gd" id="1_duqhf"]
 [ext_resource type="AudioStream" uid="uid://cpdm5jroocejl" path="res://audio/music/main_theme.wav" id="2_qemx0"]
-[ext_resource type="PackedScene" path="res://UI/options_menu.tscn" id="3_r0ls2"]
+[ext_resource type="PackedScene" uid="uid://cf68ucf56tjp1" path="res://UI/options_menu.tscn" id="3_r0ls2"]
 
 [sub_resource type="SystemFont" id="SystemFont_4qv8l"]
 

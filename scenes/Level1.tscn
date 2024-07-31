@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Alchemy/PhilosopherTable.gd" id="4_og8h7"]
 [ext_resource type="PackedScene" uid="uid://5wpla3btmto1" path="res://model_scenes/enemy_spawn_area.tscn" id="5_1qsfv"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
-[ext_resource type="PackedScene" path="res://UI/options_menu.tscn" id="6_0xhtr"]
+[ext_resource type="PackedScene" uid="uid://cf68ucf56tjp1" path="res://UI/options_menu.tscn" id="6_0xhtr"]
 [ext_resource type="Script" path="res://UI/Inventory.gd" id="6_7giy0"]
 [ext_resource type="PackedScene" uid="uid://c5cfety2533lh" path="res://scenes/slot.tscn" id="6_8582x"]
 [ext_resource type="PackedScene" uid="uid://cdnceum0f6rfo" path="res://assets/map/big_portal.fbx" id="6_psx8o"]

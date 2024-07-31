@@ -82,7 +82,7 @@ func _on_alchemy_ended():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	player.visible = true
 	set_active_camera(playerCamera)
-	philsopher_table.setup_philosopher_table()
+	philsopher_table.end_alchemy_session()
 
 func _on_world_player_created(player_path):
 	player = get_node(player_path)

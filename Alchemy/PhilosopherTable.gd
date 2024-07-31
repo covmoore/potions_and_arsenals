@@ -44,17 +44,11 @@ func setup_philosopher_table():
 	match_player_inevntory(player_items)
 
 func end_alchemy_session():
-	pass
 	#wipe the ingredients if any are left in ingredients table
-	#for slot in philosopherTableIngredients.get_children():
-		#if not slot.name.begins_with("Ingredient"):
-			#var nil_slot = ResourceLoader.load("res://scenes/slot.tscn")
-			#if nil_slot:
-				#var nil_slot_instance = nil_slot.instantiate()
-				#philosopherTableIngredients.remove_child(slot)
-				#philosopherTableIngredients.add_child(nil_slot_instance)
-				#nil_slot_instance.name = "IngredientSlot"
-				#slot.queue_free()
+	for slot in $Ingredients.get_children():
+		if slot.get_child(0).name != "IngredientMeshEmpty":
+			slot.get_child(0).mesh = null
+			slot.get_child(0).name = "IngredientMeshEmpty"
 
 
 func _on_area_3d_body_entered(body):
