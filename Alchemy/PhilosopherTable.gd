@@ -5,7 +5,14 @@ extends Node3D
 @onready var playerInventory = $"../../PlayerUI/CanvasLayer/Inventory"
 @onready var philosopherTableInventory = $"../../PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory"
 @onready var philosopherCamera = $PhilosopherCamera
+@onready var craftButton = $"../../PlayerUI/CanvasLayer/PhilosopherMenu/CraftButton"
 var player = null
+
+var recipes = {
+	["hourglass","fairy_wings"] : "faun-hoof",
+	["flower","gold","blade_of_grass"] : "golden-bullet",
+	["amethyst","pegasushorn","sugar_water"] : "ferret"
+}
 
 func _ready():
 	world.debug_print("Trying to access philosopherCamera", true)
@@ -66,3 +73,36 @@ func _on_area_3d_body_exited(body):
 				player.current_state = player.PLAYER_STATE.ACTIVE
 				world.debug_print(player.current_state)
 		playerUI.interact_text.visible = false
+
+func check_if_valid_recipe(table_ingredients):
+	for recipe in recipes.keys():
+		var seen_item = {}
+		#initalize all items in recipe to be not seen
+		for item in recipe:
+			if item not in seen_item:
+				seen_item[item] = false
+		#check if ingredients are in this recipe and set to true if they are
+		for ingredient in table_ingredients:
+			if ingredient in seen_item.keys():
+				seen_item[ingredient] = true
+		#loop back through seen items and see if all values are true
+		var all_recipe_items_on_table = true
+		for item in seen_item.keys():
+			if seen_item[item] == false:
+				all_recipe_items_on_table = false
+				break
+		if all_recipe_items_on_table:
+			return true
+	return false
+
+func _on_craft_button_pressed():
+	#get the items on the table and place in an array
+	var ingredients_on_table = []
+	for ingredient in $Ingredients.get_children():
+		if ingredient.get_child(0).name != "IngredientMeshEmpty":
+			ingredients_on_table.append(str(ingredient.get_child(0).name))
+	var isValidRecipe = check_if_valid_recipe(ingredients_on_table)
+	if isValidRecipe:
+		player.collectBoon(recipes[ingredients_on_table])
+	else:
+		print("LMAOOOO BRO REALLY TRIED TO PUT AN INVAlID RECIPE ON THE TABLE")
