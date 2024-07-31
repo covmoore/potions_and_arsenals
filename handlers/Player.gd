@@ -80,7 +80,7 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-45), deg_to_rad(60))
 		
-	if Input.is_action_just_pressed("pause") and current_state != PLAYER_STATE.DEAD:
+	if Input.is_action_just_pressed("pause") and (current_state != PLAYER_STATE.DEAD and current_state != PLAYER_STATE.ALCHEMY):
 		toggle_pause()
 
 var _was_on_floor_last_frame = false
