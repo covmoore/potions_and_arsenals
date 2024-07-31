@@ -22,7 +22,6 @@ script = ExtResource("1_duqhf")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_qemx0")
 autoplay = true
-bus = &"Music"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

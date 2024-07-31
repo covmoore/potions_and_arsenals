@@ -44,7 +44,7 @@ func _ready():
 	Engine.time_scale = 1
 	delay_created = false
 	enemy_spawn_state = SPAWN_STATE.NO_SPAWN
-	game_difficulty = DIFFICULTY.NORMAL
+	game_difficulty = DIFFICULTY.PEACEFUL
 	debug_level = DEBUG_LEVEL.DEBUG
 	player_spawn_point.visible = false
 	player_instance = player.instantiate()
@@ -92,7 +92,6 @@ func _process(delta):
 func _on_enemy_enemy_died():
 	enemy_count -= 1
 	
-
 #Prints a message based on debug level
 func debug_print(msg, obnoxious_print:bool = false):
 	if debug_level == DEBUG_LEVEL.DEBUG:
