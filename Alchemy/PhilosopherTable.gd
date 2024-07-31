@@ -1,7 +1,7 @@
 extends Area3D
 
-@onready var world = $"../.."
-@onready var playerUI = $"../../PlayerUI"
+@onready var world = $"../../.."
+@onready var playerUI = $"../../../PlayerUI"
 @onready var playerInventory = $"../../PlayerUI/CanvasLayer/Inventory"
 @onready var philosopherTableInventory = $"../../PlayerUI/CanvasLayer/Philosopher/PhilosopherInventory/Inventory"
 #@onready var philosopherTableIngredients = $"../../PlayerUI/CanvasLayer/AlchemyPanel/IngredientsMarginContainer/IngredientsHBoxContainer/Ingredients"

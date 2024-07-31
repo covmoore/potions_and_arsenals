@@ -40,6 +40,7 @@ signal player_healed
 @onready var gun_barrel = $Head/Camera3D/TemHandGun/RayCast3D
 @onready var player_ui = $"../PlayerUI"
 @onready var player_inventory = $"../PlayerUI/CanvasLayer/Inventory"
+@onready var stairs_below_raycast = $StairsBelowRaycast
 
 func _ready():
 	camera.current = true
@@ -49,28 +50,14 @@ func _ready():
 func pause_game():
 	current_state = PLAYER_STATE.PAUSED
 	Engine.time_scale = 0
-	player_ui.paused_text.visible = true
+	player_ui.setPaused(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_mode = "visible"
-	
-	for child in player_ui.get_child(0).get_children():
-		if not child.is_in_group("PauseMenu"):
-			if child.has_method("set_visible"):
-				child.visible = false
 
 func resume_game():
 	current_state = PLAYER_STATE.ACTIVE
 	Engine.time_scale = 1
-	
-	for child in player_ui.get_child(0).get_children():
-		if child.is_in_group("PauseMenu"):
-			if child.has_method("set_visible"):
-				child.visible = false
-		else:
-			if child.is_in_group("PlayerActiveUI"):
-				if child.has_method("set_visible"):
-					child.visible = true
-	
+	player_ui.setPaused(false)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_mode = "captured"
 
@@ -88,6 +75,24 @@ func _unhandled_input(event):
 		
 	if Input.is_action_just_pressed("pause") and current_state != PLAYER_STATE.DEAD:
 		toggle_pause()
+
+var _was_on_floor_last_frame = false
+var _snapped_to_stairs_last_frame = false
+#func _snap_down_to_stairs_check():
+	#var did_snap = false
+	#if not is_on_floor() and velocity.y <= 0 and (_was_on_floor_last_frame or _snapped_to_stairs_last_frame) and stairs_below_raycast.is_colliding():
+		#var body_test_result = PhysicsTestMotionResult3D.new()
+		#var params = PhysicsTestMotionParameters3D.new()
+		#var max_step_down = -0.5
+		#params.from = global_transform
+		#params.motion = Vector3(0,max_step_down,0)
+		#if PhysicsServer3D.body_test_motion(get_rid(), params, body_test_result):
+			#var translate_y = body_test_result.get_travel().y
+			#position.y += translate_y
+			#apply_floor_snap()
+			#did_snap = true
+	#_was_on_floor_last_frame = is_on_floor()
+	#_snapped_to_stairs_last_frame = did_snap
 		
 func _physics_process(delta):
 	# Add the gravity.
@@ -119,6 +124,7 @@ func _physics_process(delta):
 				get_parent().add_child(bullet_instance)
 				
 		move_and_slide()
+		#_snap_down_to_stairs_check()
 		check_heal()
 
 func hit(dmg):
