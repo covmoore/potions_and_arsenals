@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ccgokmjd4mq64" path="res://assets/map/stairsblend.fbx" id="7_5rhcd"]
 [ext_resource type="Script" path="res://scenes/HUD.gd" id="7_cp8c3"]
 [ext_resource type="Shader" path="res://scenes/void.gdshader" id="7_nvjgy"]
-[ext_resource type="ArrayMesh" uid="uid://dh267eh7kar0i" path="res://stairs.tres" id="8_k10i2"]
+[ext_resource type="ArrayMesh" uid="uid://td7qrvjsq8kj" path="res://stairs.tres" id="8_k10i2"]
 [ext_resource type="PackedScene" uid="uid://i4hbjlfiy4k4" path="res://assets/map/alchemy_table.fbx" id="9_7ca5p"]
 [ext_resource type="AudioStream" uid="uid://bxes3e7pm0u13" path="res://audio/music/fight_with_gusto.wav" id="9_38n0e"]
 [ext_resource type="PackedScene" uid="uid://dx8q62en5y5sc" path="res://assets/map/glass_fence.fbx" id="9_govv0"]
