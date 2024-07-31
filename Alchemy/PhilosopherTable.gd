@@ -9,8 +9,8 @@ extends Node3D
 var player = null
 
 var recipes = {
-	["hourglass","fairy_wings"] : "faun-hoof",
-	["flower","gold","blade_of_grass"] : "golden-bullet",
+	["fairy_wings", "hourglass"] : "faun-hoof",
+	["blade_of_grass","flower","gold"] : "golden-bullet",
 	["amethyst","pegasushorn","sugar_water"] : "ferret"
 }
 
@@ -94,6 +94,10 @@ func check_if_valid_recipe(table_ingredients):
 		if all_recipe_items_on_table:
 			return true
 	return false
+	
+func sort_ingredients(ingredients_on_table:Array) -> Array:
+	ingredients_on_table.sort()
+	return ingredients_on_table
 
 func _on_craft_button_pressed():
 	#get the items on the table and place in an array
@@ -103,6 +107,7 @@ func _on_craft_button_pressed():
 			ingredients_on_table.append(str(ingredient.get_child(0).name))
 	var isValidRecipe = check_if_valid_recipe(ingredients_on_table)
 	if isValidRecipe:
-		player.collectBoon(recipes[ingredients_on_table])
+		var sorted_ingredients = sort_ingredients(ingredients_on_table)
+		player.collectBoon(recipes[sorted_ingredients])
 	else:
 		print("LMAOOOO BRO REALLY TRIED TO PUT AN INVAlID RECIPE ON THE TABLE")
