@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8hhrnxeml3xs"
+path="res://.godot/imported/Shadows and Alchemy.wav-fd27cfd7b6f7e15127a2ceade3b7e0f1.sample"
+
+[deps]
+
+source_file="res://audio/music/Shadows and Alchemy.wav"
+dest_files=["res://.godot/imported/Shadows and Alchemy.wav-fd27cfd7b6f7e15127a2ceade3b7e0f1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
