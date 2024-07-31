@@ -32,7 +32,6 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:RootNode/Cube": {
-"generate/navmesh": 1,
 "generate/physics": true,
 "physics/shape_type": 1
 }

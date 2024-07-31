@@ -3,7 +3,7 @@ extends Node
 
 var rngTree
 @onready var alchemy_data = {}
-var drop_probability = .10
+var drop_probability = .30
 var last_item_bound = 0
 const RNG_RANGE = 1000.00
 var world_instance = null

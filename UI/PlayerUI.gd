@@ -49,17 +49,15 @@ func _on_player_player_healed(health):
 
 func _input(event):
 	if event is InputEventKey:
-		if event.pressed and event.physical_keycode == KEY_V and (player.current_state == player.PLAYER_STATE.ACTIVE 
-																or player.current_state == player.PLAYER_STATE.INVENTORY):
-			inventory_ui.visible = not inventory_ui.visible
-			#show the cursor if not shown
-			if inventory_ui.visible:
-				player.current_state = player.PLAYER_STATE.INVENTORY
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			else:
-				player.current_state = player.PLAYER_STATE.ACTIVE
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		elif event.pressed and event.physical_keycode == KEY_E and (player.current_state == player.PLAYER_STATE.ACTIVE
+		if event.is_action_pressed("open_inventory") and player.current_state == player.PLAYER_STATE.ACTIVE:
+			inventory_ui.visible = true
+			player.current_state = player.PLAYER_STATE.INVENTORY
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		elif event.is_action_released("open_inventory") and player.current_state == player.PLAYER_STATE.INVENTORY:
+			inventory_ui.visible = false
+			player.current_state = player.PLAYER_STATE.ACTIVE
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		elif event.is_action_pressed("interact") and (player.current_state == player.PLAYER_STATE.ACTIVE
 																	or player.current_state == player.PLAYER_STATE.ALCHEMY):
 			if player.isByPhilsopherTable:
 				if not PhilosopherMenu.visible:
@@ -90,6 +88,7 @@ func _on_world_player_created(player_path):
 	player.connect("player_hit", _on_player_player_hit)
 	player.connect("player_died", _on_player_player_died)
 	player.connect("player_healed", _on_player_player_healed)
+	player.connect("player_received_points", _on_player_received_points)
 
 func _on_try_again_pressed():
 	get_tree().reload_current_scene()
@@ -126,3 +125,10 @@ func _on_leave_game_btn_pressed():
 
 func _on_quit_pressed():
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+
+func _on_player_received_points(points):
+	HUD.setPoints(points)
+
+func setHealth(health):
+	HUD.setHealth(health)
+	

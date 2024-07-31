@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://utgdxhh6n47w"]
+[gd_scene load_steps=10 format=3 uid="uid://utgdxhh6n47w"]
 
-[ext_resource type="Script" path="res://handlers/Player.gd" id="1_1egur"]
+[ext_resource type="Script" path="res://handlers/Player.gd" id="1_fw6qi"]
+[ext_resource type="Script" path="res://model_scenes/BoonManager.gd" id="2_iubyg"]
 [ext_resource type="PackedScene" uid="uid://cvv5pwrpajr15" path="res://model_scenes/tem_hand_gun.tscn" id="2_nlt3j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ta2s"]
@@ -22,7 +23,10 @@ material = SubResource("StandardMaterial3D_eti20")
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 floor_snap_length = 0.2
-script = ExtResource("1_1egur")
+script = ExtResource("1_fw6qi")
+
+[node name="BoonManager" type="Node" parent="."]
+script = ExtResource("2_iubyg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_3apvo")

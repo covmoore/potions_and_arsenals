@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://csaga0h3w1ktj"]
+
+[ext_resource type="Script" path="res://Recipe/recipeTablets.gd" id="1_bmumq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_iys1j"]
+size = Vector3(1, 1.5, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jun7v"]
+albedo_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_4s0j5"]
+material = SubResource("StandardMaterial3D_jun7v")
+text = "Flower + Wings = Show"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v4oar"]
+size = Vector3(1.83893, 1.5564, 4.07849)
+
+[node name="RecipeTablets" type="Node3D"]
+script = ExtResource("1_bmumq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.075, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_iys1j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 5, 0, 1, 0, -1, 0, -2.18557e-07, 0.684738, 0, 0)
+mesh = SubResource("TextMesh_4s0j5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0132751, -0.0150146, 0.0231323)
+shape = SubResource("BoxShape3D_v4oar")
