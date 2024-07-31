@@ -7,16 +7,25 @@ signal item_picked_up
 func _ready():
 	for child in get_children():
 		inventory.append(child)
-	#TODO delete the following lines once philosopher table works
-	add_item("Amethyst", "res://Alchemy/images/amethyst.png")
-	add_item("Pegasus Horn", "res://Alchemy/images/pegasushorn.png")
-	add_item("Sugar Water", "res://Alchemy/images/sugar_water.png")
 
 func get_items() -> Array:
 	var items = []
 	for item in inventory:
 		items.append(item)
 	return items
+
+func remove_item(item_image):
+	for i in range (get_child_count()):
+		print(get_child(i).name)
+		if get_child(i).get_child(0).has_node("TextureRect"):
+			if get_child(i).get_child(0).texture.resource_path == item_image:
+				var empty_slot = ResourceLoader.load("res://scenes/slot.tscn")
+				if empty_slot:
+					var empty_slot_instance = empty_slot.instantiate()
+					get_child(i).remove_child(get_child(i).get_child(0))
+					get_child(i).add_child(empty_slot_instance)
+					inventory[i] = empty_slot_instance
+					break
 
 func add_item(item_name, item_image):
 	var item_added = false

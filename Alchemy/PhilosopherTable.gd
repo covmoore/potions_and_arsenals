@@ -109,5 +109,12 @@ func _on_craft_button_pressed():
 	if isValidRecipe:
 		var sorted_ingredients = sort_ingredients(ingredients_on_table)
 		player.collectBoon(recipes[sorted_ingredients])
+		#delete items from inventory
+		var image_prefix = "res://Alchemy/images/"
+		var image_suffix = ".png"
+		for item in ingredients_on_table:
+			var image_path = str(image_prefix + item + image_suffix)
+			print(image_path)
+			playerInventory.remove_item(image_path)
 	else:
 		print("LMAOOOO BRO REALLY TRIED TO PUT AN INVAlID RECIPE ON THE TABLE")
