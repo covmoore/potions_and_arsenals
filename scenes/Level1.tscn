@@ -612,12 +612,29 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/CanvasLayer/HUD/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
 alignment = 2
 
 [node name="point_text" type="Label" parent="PlayerUI/CanvasLayer/HUD/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "0"
+
+[node name="separator" type="Control" parent="PlayerUI/CanvasLayer/HUD/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 450)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PlayerUI/CanvasLayer/HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="pickup_text" type="Label" parent="PlayerUI/CanvasLayer/HUD/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+1 PlaceHolder"
 
 [node name="PauseMenu" type="Control" parent="PlayerUI/CanvasLayer"]
 visible = false
