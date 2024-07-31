@@ -8,10 +8,11 @@ enum PLAYER_STATE {
 	DEAD
 }
 
-const SPEED = 5.0
+var speed = 5.0
+var damage = 1.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
-var max_health = 5
+var max_health = 3
 var isAlive = true
 var isByPhilsopherTable = false
 var health = max_health
@@ -22,6 +23,8 @@ var hit_to_heal_delay = 15
 var heal_delay = 5
 var last_healed = 0
 
+var current_points = 0
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var bullet = load("res://model_scenes/handgun_projectile.tscn")
@@ -30,6 +33,8 @@ var bullet_instance
 signal player_hit
 signal player_died
 signal player_healed
+signal player_received_points
+signal boon_activated
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -42,6 +47,7 @@ signal player_healed
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_state = PLAYER_STATE.ACTIVE
+	player_ui.setHealth(health)
 
 func pause_game():
 	current_state = PLAYER_STATE.PAUSED
@@ -105,16 +111,18 @@ func _physics_process(delta):
 		var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 		var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
 		
 		if Input.is_action_just_pressed("shoot") and current_state == PLAYER_STATE.ACTIVE:
 			if !gun_anim.is_playing():
 				gun_anim.play("Shoot")
 				bullet_instance = bullet.instantiate()
+				bullet_instance.player = self
+				bullet_instance.damage = damage
 				bullet_instance.position = gun_barrel.global_position
 				bullet_instance.basis = gun_barrel.global_transform.basis
 				get_parent().add_child(bullet_instance)
@@ -152,4 +160,10 @@ func check_heal():
 				if health >= max_health:
 					health = max_health
 				emit_signal("player_healed", health)
-			
+
+func setPoints(points):
+	current_points += points
+	emit_signal("player_received_points", current_points)
+
+func collectBoon(boon):
+	emit_signal("boon_activated", boon)

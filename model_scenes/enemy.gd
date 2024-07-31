@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
-var health = 5
+var health = 3
 const SPEED = 3.0
-const ATTACK_RANGE = 1
+const ATTACK_RANGE = 1.3
 var last_attacked = 0
-const HIT_SPEED = 2000
+const HIT_SPEED = 1500
 
 var player = null
 
@@ -13,10 +13,17 @@ var player = null
 @onready var world = $".."
 @onready var alchemy_item_manager_instance = $"../AlchemyItemManager"
 
+var hit_points = 1
+var kill_points = 5
+var kill_to_increment = 20
+
 signal enemy_died
 
 func _ready():
-	pass
+	var enemies_killed = world.enemies_killed
+	var health_add = floor(enemies_killed / kill_to_increment)
+	print(health_add)
+	health += health_add
 	#alchemy_item_manager_instance = get_tree().get_root().get_node("AlchemyItemManager")
 	
 func _process(delta):
@@ -59,3 +66,9 @@ func hit(dmg):
 
 func _on_world_player_created(player_path):
 	player = get_node(player_path)
+
+func getPointAmount(dmg):
+	if dmg >= health:
+		return kill_points
+	else:
+		return hit_points

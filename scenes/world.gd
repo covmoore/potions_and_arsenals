@@ -29,12 +29,18 @@ var enemy = load("res://model_scenes/temp_enemy.tscn")
 var game_timer = 0
 var rng = null
 var spawn_areas = null
-var timer = 0.0
-const max_enemies = 20
-const ENEMY_NUM_TRIGGER = 5
+var spawn_timer = 0.0
+var wave_timer = 0.0
+var max_enemies = 5
+var enemy_increment = 3
+const min_enemies = 0
 var enemy_count = 0
 var spawn_delay = 2.0
+var wave_spawn_delay = 12.0
 var delay_created = false
+
+var enemies_killed = 0
+var points = 0
 
 
 signal player_created
@@ -48,6 +54,7 @@ func _ready():
 	debug_level = DEBUG_LEVEL.DEBUG
 	player_spawn_point.visible = false
 	player_instance = player.instantiate()
+	player_instance.connect("player_received_points", _on_player_received_points)
 	player_instance.position = player_spawn_point.global_position
 	player_instance.basis = player_spawn_point.global_transform.basis
 	add_child(player_instance)
@@ -62,16 +69,17 @@ func _process(delta):
 	if player_instance != null && rng != null && spawn_areas != null:
 		var randNum = rng.randi_range(0, enemy_spawn_areas.get_child_count()-1)
 		var spawn = spawn_areas[randNum]
-		
-		if enemy_count <= ENEMY_NUM_TRIGGER && enemy_spawn_state == SPAWN_STATE.NO_SPAWN:
+		if enemy_count <= min_enemies && enemy_spawn_state == SPAWN_STATE.NO_SPAWN:
 			if delay_created == false:
 				spawn_delay = rng.randf_range(1, 3)
 				delay_created = true
+				max_enemies += enemy_increment
 			enemy_spawn_state = SPAWN_STATE.SPAWN
 		if enemy_spawn_state == SPAWN_STATE.SPAWN && delay_created == true:
-			timer += delta
-			if timer >= spawn_delay:
-				timer = 0.0
+			spawn_timer += delta
+			wave_timer += delta
+			if spawn_timer >= spawn_delay and wave_timer >= wave_spawn_delay:
+				spawn_timer = 0.0
 				var enemy_instance = enemy.instantiate()
 				var halfHeightX = ((spawn.scale.x) * sqrt(2)) / 4
 				var halfHeightZ = ((spawn.scale.z) * sqrt(2)) / 4
@@ -86,12 +94,16 @@ func _process(delta):
 				enemy_instance.connect("enemy_died", _on_enemy_enemy_died)
 				enemy_count += 1
 			if enemy_count >= max_enemies:
+				wave_timer = 0.0
 				enemy_spawn_state = SPAWN_STATE.NO_SPAWN
 				delay_created = false
 			
 func _on_enemy_enemy_died():
 	enemy_count -= 1
-	
+	enemies_killed += 1
+
+func _on_player_received_points(cur_points):
+	points = cur_points
 
 #Prints a message based on debug level
 func debug_print(msg, obnoxious_print:bool = false):
