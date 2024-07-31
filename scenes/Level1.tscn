@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://buyhvh6k31qu7"]
+[gd_scene load_steps=57 format=3 uid="uid://buyhvh6k31qu7"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
 [ext_resource type="PackedScene" uid="uid://cty3y68hwt6jn" path="res://model_scenes/player_spawn_point.tscn" id="2_c2mix"]
@@ -114,6 +114,8 @@ material = SubResource("StandardMaterial3D_ugpae")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_au5dt"]
 size = Vector3(2.95044, 2.24005, 5.34705)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ilbb4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0smwi"]
 material = ExtResource("4_gnylx")
@@ -360,15 +362,45 @@ physics_material_override = SubResource("PhysicsMaterial_8los7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/MeshInstance3D3/StaticBody3D"]
 shape = SubResource("BoxShape3D_5qdlf")
 
-[node name="AlchemyTable" parent="Map" instance=ExtResource("9_7ca5p")]
+[node name="PhilosopherTable" parent="Map" instance=ExtResource("9_7ca5p")]
 transform = Transform3D(-0.586015, 0, 0.12879, 0, 0.6, 0, -0.12879, 0, -0.586015, -13.8938, 2.52686, -5.52192)
-
-[node name="Area3D" type="Area3D" parent="Map/AlchemyTable"]
 script = ExtResource("4_og8h7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/AlchemyTable/Area3D"]
+[node name="Area3D" type="Area3D" parent="Map/PhilosopherTable"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/PhilosopherTable/Area3D"]
 transform = Transform3D(0.999999, 0, -2.83122e-07, 0, 1.00001, 0, 2.83122e-07, 0, 0.999999, 0.136599, 0.620026, -0.003232)
 shape = SubResource("BoxShape3D_au5dt")
+
+[node name="PhilosopherCamera" type="Camera3D" parent="Map/PhilosopherTable"]
+transform = Transform3D(-1.78814e-07, -0.95596, 1.36525, 0, 1.36525, 0.955961, -1.66667, 8.9407e-08, -1.19209e-07, 4, 3.75, -0.125)
+
+[node name="Ingredients" type="Node3D" parent="Map/PhilosopherTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="IngredientCollider" type="CollisionShape3D" parent="Map/PhilosopherTable/Ingredients"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.75, 0.407, 1.5)
+shape = SubResource("BoxShape3D_ilbb4")
+
+[node name="IngredientMeshEmpty" type="MeshInstance3D" parent="Map/PhilosopherTable/Ingredients/IngredientCollider"]
+transform = Transform3D(1, 0, 2.98023e-07, 0, 1, 0, -2.98023e-07, 0, 1, 0, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="IngredientCollider2" type="CollisionShape3D" parent="Map/PhilosopherTable/Ingredients"]
+transform = Transform3D(0.5, 0, 1.11759e-07, 0, 0.5, 0, -1.11759e-07, 0, 0.5, 0.75, 0.407, 0.5)
+shape = SubResource("BoxShape3D_ilbb4")
+
+[node name="IngredientMeshEmpty" type="MeshInstance3D" parent="Map/PhilosopherTable/Ingredients/IngredientCollider2"]
+transform = Transform3D(1, 0, 2.98023e-07, 0, 1, 0, -2.98023e-07, 0, 1, 0, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="IngredientCollider3" type="CollisionShape3D" parent="Map/PhilosopherTable/Ingredients"]
+transform = Transform3D(0.5, 0, 1.11759e-07, 0, 0.5, 0, -1.11759e-07, 0, 0.5, 0.75, 0.407, -0.5)
+shape = SubResource("BoxShape3D_ilbb4")
+
+[node name="IngredientMeshEmpty" type="MeshInstance3D" parent="Map/PhilosopherTable/Ingredients/IngredientCollider3"]
+transform = Transform3D(1, 0, 2.98023e-07, 0, 1, 0, -2.98023e-07, 0, 1, 0, 0, 0)
+skeleton = NodePath("../../..")
 
 [node name="ceiling" type="Node3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, -87.9205, 0, 1, -3.84312e-06, 0, 0, 0, 72.3733, 0.146958, 33.1019, -0.275635)
@@ -588,6 +620,7 @@ theme_override_font_sizes/font_size = 40
 text = "0"
 
 [node name="PauseMenu" type="Control" parent="PlayerUI/CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -678,7 +711,7 @@ script = ExtResource("6_7giy0")
 [node name="InventorySlot" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
 [node name="InventorySlot3" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
@@ -723,72 +756,78 @@ layout_mode = 2
 [node name="InventorySlot16" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="AlchemyPanel" type="PanelContainer" parent="PlayerUI/CanvasLayer"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
+[node name="PhilosopherMenu" type="Control" parent="PlayerUI/CanvasLayer"]
+custom_minimum_size = Vector2(0, 332)
+layout_mode = 3
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -200.0
-offset_right = 400.0
-offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Inventory" type="GridContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel"]
+[node name="PhilosopherPanel" type="PanelContainer" parent="PlayerUI/CanvasLayer/PhilosopherMenu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -166.0
+offset_right = 332.0
+offset_bottom = 166.0
+grow_vertical = 2
+
+[node name="Inventory" type="GridContainer" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 columns = 4
 
-[node name="InventorySlot" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot3" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot3" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot4" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot4" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot5" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot5" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot6" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot6" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot7" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot7" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot8" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot8" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot9" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot9" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot10" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot10" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot11" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot11" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot12" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot12" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot13" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot13" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot14" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot14" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot15" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot15" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
-[node name="InventorySlot16" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+[node name="InventorySlot16" parent="PlayerUI/CanvasLayer/PhilosopherMenu/PhilosopherPanel/Inventory" instance=ExtResource("6_8582x")]
 layout_mode = 2
 
 [node name="enemy_spawn_areas" type="Node3D" parent="."]
@@ -838,8 +877,8 @@ omni_attenuation = 0.307786
 [node name="LightmapGI" type="LightmapGI" parent="lights"]
 
 [connection signal="player_created" from="." to="PlayerUI" method="_on_world_player_created"]
-[connection signal="body_entered" from="Map/AlchemyTable/Area3D" to="Map/AlchemyTable/Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="Map/AlchemyTable/Area3D" to="Map/AlchemyTable/Area3D" method="_on_body_exited"]
+[connection signal="body_entered" from="Map/PhilosopherTable/Area3D" to="Map/PhilosopherTable" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Map/PhilosopherTable/Area3D" to="Map/PhilosopherTable" method="_on_area_3d_body_exited"]
 [connection signal="pressed" from="PlayerUI/CanvasLayer/GameOverMenu/tryAgain" to="." method="_on_try_again_pressed"]
 [connection signal="pressed" from="PlayerUI/CanvasLayer/GameOverMenu/tryAgain" to="PlayerUI" method="_on_try_again_pressed"]
 [connection signal="pressed" from="PlayerUI/CanvasLayer/GameOverMenu/quit" to="PlayerUI" method="_on_quit_pressed"]

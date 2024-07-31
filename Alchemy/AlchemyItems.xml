@@ -19,7 +19,7 @@
 		<name>Sugar Water</name>
 		<image_path>res://Alchemy/images/sugar_water.png</image_path>
 		<collider_path>res://Alchemy/colliders/cylinder.tres</collider_path>
-		<mesh_path>res://Alchemy/meshes/sugarwater.tres</mesh_path>
+		<mesh_path>res://Alchemy/meshes/sugar_water.tres</mesh_path>
 		<loot_probability>0.14</loot_probability>
 		<grade>common</grade>
 	</item>
@@ -59,7 +59,7 @@
 		<name>Toxic Sludge</name>
 		<image_path>res://Alchemy/images/toxic_waste.png</image_path>
 		<collider_path>res://Alchemy/colliders/cylinder.tres</collider_path>
-		<mesh_path>res://Alchemy/meshes/ToxicSludge.tres</mesh_path>
+		<mesh_path>res://Alchemy/meshes/toxic_waste.tres</mesh_path>
 		<loot_probability>0.05</loot_probability>
 		<grade>rare</grade>
 	</item>

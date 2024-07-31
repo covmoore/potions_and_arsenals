@@ -1,0 +1,420 @@
+[gd_scene load_steps=26 format=3 uid="uid://buyhvh6k31qu7"]
+
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_aaeb4"]
+[ext_resource type="PackedScene" uid="uid://cty3y68hwt6jn" path="res://model_scenes/player_spawn_point.tscn" id="2_c2mix"]
+[ext_resource type="Script" path="res://Alchemy/AlchemyItemManager.gd" id="2_ynhcn"]
+[ext_resource type="Script" path="res://Alchemy/PhilosopherTable.gd" id="4_og8h7"]
+[ext_resource type="PackedScene" uid="uid://5wpla3btmto1" path="res://model_scenes/enemy_spawn_area.tscn" id="5_1qsfv"]
+[ext_resource type="Script" path="res://UI/PlayerUI.gd" id="5_6kfod"]
+[ext_resource type="Script" path="res://UI/Inventory.gd" id="6_7giy0"]
+[ext_resource type="PackedScene" uid="uid://c5cfety2533lh" path="res://scenes/slot.tscn" id="6_8582x"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f6la6"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_bm8if"]
+sky_material = SubResource("ProceduralSkyMaterial_f6la6")
+
+[sub_resource type="Environment" id="Environment_quc4e"]
+background_mode = 2
+sky = SubResource("Sky_bm8if")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugpae"]
+albedo_color = Color(0.714684, 0.606748, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u445y"]
+material = SubResource("StandardMaterial3D_ugpae")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8los7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5qdlf"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hr1lv"]
+vertices = PackedVector3Array(-41.1485, 0.4, -34.761, -41.1485, 0.4, 34.739, 41.1015, 0.4, 34.739, 41.1015, 0.4, -34.761)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6mppw"]
+albedo_color = Color(0.454986, 0.809785, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_au5dt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i52vv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptuee"]
+albedo_color = Color(0.31484, 0.142258, 0.0635568, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cxgmt"]
+font_size = 46
+font_color = Color(0.53, 0.0636, 0.0713732, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eqxe0"]
+font_size = 72
+font_color = Color(0.45, 0, 0.00749989, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ed7c8"]
+font_size = 45
+font_color = Color(0.45098, 0, 0.00784314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0g3do"]
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+shadow_color = Color(1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iw06f"]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_aaeb4")
+
+[node name="AlchemyItemManager" type="Node3D" parent="."]
+script = ExtResource("2_ynhcn")
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_c2mix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4496, 0.126436, 0)
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+environment = SubResource("Environment_quc4e")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Map"]
+transform = Transform3D(-3.40319, 0, -10.6681, 0, 7.1066, 0, 5.4136, 0, -6.70634, -5.38735, 3.30178, -19.7423)
+mesh = SubResource("BoxMesh_u445y")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Map/MeshInstance3D3"]
+physics_material_override = SubResource("PhysicsMaterial_8los7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_5qdlf")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Map"]
+transform = Transform3D(-0.293413, 0, -0.392849, 0, 3.3167, 0, 0.466745, 0, -0.246958, -17.935, 1.6151, -4.78144)
+mesh = SubResource("BoxMesh_u445y")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Map/MeshInstance3D4"]
+physics_material_override = SubResource("PhysicsMaterial_8los7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/MeshInstance3D4/StaticBody3D"]
+shape = SubResource("BoxShape3D_5qdlf")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Map"]
+navigation_mesh = SubResource("NavigationMesh_hr1lv")
+
+[node name="Ground" type="CSGBox3D" parent="Map/NavigationRegion3D"]
+transform = Transform3D(83.2971, 0, 0, 0, 0.2, 0, 0, 0, 70.522, 0, 0, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_6mppw")
+
+[node name="Philosopher Table" type="Area3D" parent="Map"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -28, 0.9, -28)
+script = ExtResource("4_og8h7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Philosopher Table"]
+shape = SubResource("BoxShape3D_au5dt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Philosopher Table"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_i52vv")
+surface_material_override/0 = SubResource("StandardMaterial3D_ptuee")
+
+[node name="PlayerUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 1
+script = ExtResource("5_6kfod")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI"]
+
+[node name="healthTxt" type="Label" parent="PlayerUI/CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -40.0
+offset_right = 150.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "5"
+label_settings = SubResource("LabelSettings_cxgmt")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="gameOverTxt" type="Label" parent="PlayerUI/CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -51.0
+offset_right = 234.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You died lol"
+label_settings = SubResource("LabelSettings_eqxe0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pauseTxt" type="Label" parent="PlayerUI/CanvasLayer" groups=["PauseMenu"]]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_ed7c8")
+
+[node name="interactTxt" type="Label" parent="PlayerUI/CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -184.0
+offset_top = 100.0
+offset_right = 184.0
+offset_bottom = 150.0
+grow_horizontal = 2
+text = "Press \"E\" to intereact"
+label_settings = SubResource("LabelSettings_0g3do")
+horizontal_alignment = 1
+
+[node name="Inventory" type="GridContainer" parent="PlayerUI/CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -168.0
+offset_right = 166.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+script = ExtResource("6_7giy0")
+
+[node name="InventorySlot" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="PlayerUI/CanvasLayer/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="tryAgain" type="Button" parent="PlayerUI/CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_iw06f")
+anchors_preset = -1
+anchor_left = 0.407
+anchor_top = 0.694
+anchor_right = 0.407
+anchor_bottom = 0.694
+offset_left = -91.864
+offset_top = -32.712
+offset_right = 92.136
+offset_bottom = 33.288
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Try again"
+
+[node name="quit" type="Button" parent="PlayerUI/CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_iw06f")
+anchors_preset = -1
+anchor_left = 0.602
+anchor_top = 0.701
+anchor_right = 0.602
+anchor_bottom = 0.701
+offset_left = -83.5041
+offset_top = -23.248
+offset_right = 82.4959
+offset_bottom = 23.752
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 19
+text = "Become a quitter"
+
+[node name="crossHair" type="Node" parent="PlayerUI/CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="PlayerUI/CanvasLayer/crossHair"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.531
+offset_left = -3.0
+offset_top = -5.0
+offset_right = 4.0
+offset_bottom = 4.91199
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel2" type="Panel" parent="PlayerUI/CanvasLayer/crossHair"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.531
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 5.91199
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.57079
+pivot_offset = Vector2(3.54877, 14.5907)
+mouse_filter = 2
+
+[node name="AlchemyPanel" type="PanelContainer" parent="PlayerUI/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="GridContainer" parent="PlayerUI/CanvasLayer/AlchemyPanel"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 4
+
+[node name="InventorySlot" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlott2" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="PlayerUI/CanvasLayer/AlchemyPanel/Inventory" instance=ExtResource("6_8582x")]
+layout_mode = 2
+
+[node name="enemy_spawn_areas" type="Node3D" parent="."]
+
+[node name="EnemySpawnArea" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
+transform = Transform3D(4.85252, 0, 0, 0, 2.1, 0, 0, 0, 5.59192, -3.08046, 0.0880904, 20.5988)
+
+[node name="EnemySpawnArea2" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
+transform = Transform3D(7.99568, 0, 0, 0, 2.1, 0, 0, 0, 4.59062, 11.5965, 0.0880904, -8.95196)
+
+[node name="EnemySpawnArea3" parent="enemy_spawn_areas" instance=ExtResource("5_1qsfv")]
+transform = Transform3D(-1.85856, 0, -3.542, 0, 2.1, 0, 3.542, 0, -1.85856, 23.8161, 0.0880904, 10.7286)
+
+[connection signal="player_created" from="." to="PlayerUI" method="_on_world_player_created"]
+[connection signal="body_entered" from="Map/Philosopher Table" to="Map/Philosopher Table" method="_on_body_entered"]
+[connection signal="body_exited" from="Map/Philosopher Table" to="Map/Philosopher Table" method="_on_body_exited"]
+[connection signal="pressed" from="PlayerUI/CanvasLayer/tryAgain" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="PlayerUI/CanvasLayer/tryAgain" to="PlayerUI" method="_on_try_again_pressed"]
