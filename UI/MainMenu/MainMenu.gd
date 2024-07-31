@@ -1,13 +1,14 @@
 extends Control
 @onready var optionsMenu = $MarginContainer/OptionsMenu
 @onready var mainMenu = $MarginContainer/MainMenu
+@onready var creditsMenu = $MarginContainer/Credits1
 var menus = []
 
 func _ready():
-	menus = [mainMenu, optionsMenu]
-	mainMenu.visible = true
-	optionsMenu.visible = false
+	menus = [mainMenu, optionsMenu, creditsMenu]
+	switchPanel(mainMenu)
 	optionsMenu.connect("closePanel", _on_close_options)
+	creditsMenu.connect("credits_closed", _on_close_credits)
 
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://scenes/Level1.tscn")
@@ -31,4 +32,10 @@ func switchPanel(panel):
 
 func _on_close_options():
 	switchPanel(mainMenu)
-	
+
+func _on_close_credits():
+	switchPanel(mainMenu)
+
+
+func _on_credits_pressed():
+	switchPanel(creditsMenu)
