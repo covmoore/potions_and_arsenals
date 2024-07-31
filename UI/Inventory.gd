@@ -2,6 +2,8 @@ extends GridContainer
 
 var inventory = []
 
+signal item_picked_up
+
 func _ready():
 	for child in get_children():
 		inventory.append(child)
@@ -18,7 +20,7 @@ func get_items() -> Array:
 
 func add_item(item_name, item_image):
 	var item_added = false
-	
+	emit_signal("item_picked_up", item_name)
 	#check if item already exist in inventory
 	for slot in inventory:
 		if slot.get_child_count() > 0:

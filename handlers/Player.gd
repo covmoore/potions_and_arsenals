@@ -52,6 +52,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_state = PLAYER_STATE.ACTIVE
 	player_ui.setHealth(health)
+	player_inventory.connect("item_picked_up", _on_item_pick_up)
 
 func pause_game():
 	current_state = PLAYER_STATE.PAUSED
@@ -171,3 +172,6 @@ func setPoints(points):
 
 func collectBoon(boon):
 	emit_signal("boon_activated", boon)
+
+func _on_item_pick_up(itemName):
+	player_ui.HUD.setPickup(itemName)

@@ -2,7 +2,11 @@ extends AudioStreamPlayer
 
 @onready var audioStreamPlayer = $"."
 var cur_index = 0
-var songs = [preload("res://audio/music/fight_with_gusto.wav"), preload("res://audio/music/main_theme.wav")]
+var songs = [preload("res://audio/music/fight_with_gusto.wav"),
+preload("res://audio/music/without_dwayne.wav"), 
+preload("res://audio/music/destroy_the_scissors.wav"),
+preload("res://audio/music/Shadows and Alchemy.wav"),
+preload("res://audio/music/main_theme.wav")]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
