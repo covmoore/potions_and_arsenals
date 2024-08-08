@@ -63,7 +63,13 @@ The game is developed to be release on Windows and Linux as Standalone releases
 ## Development Software
 
 Godot Engine 4
+
+<img src="./img/Godot_icon.png" alt="title_image" width="100"/>
+
 Blender 3.5 for graphics and UI
+
+<img src="./img/Blender_logo_no_text.png" alt="title_image" width="100"/>
+
 Garageband for music
 
 ## Genre
@@ -82,9 +88,9 @@ The player starts in a lab with a few shadow demons spawning in. They start with
 
 ## Theme Interpretation (Sacrifice Is Strength)
 
-‘Shadows’ interpretation - Shadows as a dark entity in the game. Resembling a dark and mysterious force that needs to be eliminated by the good or ‘light’ side.
+<text style="color:cyan" >‘Shadows’</text> interpretation - Shadows as a dark entity in the game. Resembling a dark and mysterious force that needs to be eliminated by the good or ‘light’ side.
 
-‘Alchemy’ interpretation - The action of using different ingredients and materials to produce something seemingly impossible or magical. To transmute into something new.
+<text style="color:cyan">‘Alchemy’</text> interpretation - The action of using different ingredients and materials to produce something seemingly impossible or magical. To transmute into something new.
 
 In this game shadows are used as the main enemy in the game, resembling dark (physically & metaphorically) creatures that you must eliminate. The Alchemy is used as the main way to upgrade your characters, transmuting your weapons into something more magical and powerful.
 
@@ -113,6 +119,16 @@ With the themes of the jam being shadow and alchemy, we decided to go with darke
 ## Design
 
 The art experience on the team is very limited so we hope to lean into that by using low-poly designs. We will shoot for more of a cartoon look in the enemies and maybe try to leverage filters to get this look
+
+We would ideally want to go with a look that uses low-poly art and cel shading style. We want to use toon style shading.
+
+<img src="./img/Toon-shader.png" alt="title_image" width="350"/>
+<img src="./img/spectre_divide.png" alt="spectre-divide" width="350">
+<img src="./img/Wind-waker-hd-zelda-link.webp" alt="spectre-divide" width="350">
+
+[Cel-Shading in Godot]("https://youtu.be/io2y8RgF39A?si=MSstMW9lILv_zGRZ")
+
+
 
 # Audio
 
