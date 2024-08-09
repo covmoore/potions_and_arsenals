@@ -110,9 +110,31 @@ In this game shadows are used as the main enemy in the game, resembling dark (ph
 | Time as difficulty | The more time that passed. The more enemies spawn in at once, the harder they hit, and the more health they have. |
 | Perma-death | When the player dies, that’s it. They will have to start from scratch if they want to try again.
 
-## Player
-
 ## Enemies
+
+The enemies will be varying types of shadow creatures.
+
+### Clawed Shadows
+
+Clawed Shadows, also known as "Claws" are bi-pedal shadow demons with a single glowing eye on their face, and giant claws pn their left hands. They either walk or sprint towards the player and try to melee them to death. These are usually the least dangerous of the shadows, and therefore, the most studied. They whisper constantly in a language that we do not yet understand. They seem to have a very low IQ, and alone are quite stupid. When alone, they walk towards the player. However, when they are commanded by a captain, they sprint at the player, and swing faster slashes at the player. Even when commanded, claws are still the weakest of the shadows with one exception. If they have glowing claws, then stay as far away as possible.
+
+> Concept art:<br/><img src="./img/ghost_freak.png" width="200"/><br/> This with legs
+
+### Gunner Shadows
+
+The next most common shadows are the Gunner Shadows, or "Gunners". These creatures are bi-pedal, with two glowing eyes, two horns, and what looks like a cannon for a right arm. While they are a little more tricky to capture, they are still pretty dense and can be lured into a trap. While the Claws seem emotionless, the grunts seem constanly angry. They shoot blindly at anything that resembles human. They do not have the best accuracy as well. This all changes when they are commanded by a captain. They become calm, more organized, more accurate, and some even flanking the player. The projectile that these enemies shoot are slower than modern rifles, but also more deadly. It looks like a giant round black orb that get propelled out of their cannon hand.
+
+Beware Gunners with red canon arms. This has only been seen a couple of times, but very few live to talk about it.
+
+> Concept art: </br><img src="./img/doom_soldier.png" width ="200"/><br/> This but obviously more shadow-like
+
+### Ravens
+
+Ravens are curious little creatures. They seem to be the only shadows that can fly. IQ is unknown, but they behave similar to pets of the 
+
+### Shadow Rangers
+
+#### 
 
 ## Stages
 
@@ -135,10 +157,9 @@ We would ideally want to go with a look that uses low-poly art and cel shading s
 <img src="./img/Toon-shader.png" alt="title_image" width="400"/>
 <img src="./img/spectre_divide.png" alt="spectre-divide" width="350">
 <img src="./img/Wind-waker-hd-zelda-link.webp" alt="spectre-divide" width="400">
+<img src="./img/artwork5.png" alt="spectre-divide" width="500">
 
 [Cel-Shading in Godot]("https://youtu.be/io2y8RgF39A?si=MSstMW9lILv_zGRZ")
-
-
 
 # Audio
 
