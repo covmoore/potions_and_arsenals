@@ -110,6 +110,16 @@ In this game shadows are used as the main enemy in the game, resembling dark (ph
 | Time as difficulty | The more time that passed. The more enemies spawn in at once, the harder they hit, and the more health they have. |
 | Perma-death | When the player dies, that’s it. They will have to start from scratch if they want to try again.
 
+## Player
+
+## Enemies
+
+## Stages
+
+### Weapons
+
+### 
+
 # Art
 
 ## Theme Interpretation
@@ -122,9 +132,9 @@ The art experience on the team is very limited so we hope to lean into that by u
 
 We would ideally want to go with a look that uses low-poly art and cel shading style. We want to use toon style shading.
 
-<img src="./img/Toon-shader.png" alt="title_image" width="350"/>
+<img src="./img/Toon-shader.png" alt="title_image" width="400"/>
 <img src="./img/spectre_divide.png" alt="spectre-divide" width="350">
-<img src="./img/Wind-waker-hd-zelda-link.webp" alt="spectre-divide" width="350">
+<img src="./img/Wind-waker-hd-zelda-link.webp" alt="spectre-divide" width="400">
 
 [Cel-Shading in Godot]("https://youtu.be/io2y8RgF39A?si=MSstMW9lILv_zGRZ")
 
