@@ -99,7 +99,7 @@ In this game shadows are used as the main enemy in the game, resembling dark (ph
 | Mechanic | Description |
 | -------- | ----------- |
 | **Shooting** | The user will use different weapons to kill the shadow demons |
-| **Philosipher's Table**  | The user can use the philosipher's table to create boons. These boons can be added to guns to make them more powerful and more effective at taking down the swarms of enemies. The user will need to figure which recipes make which potions. |
+| **Philosipher's Table**  | The user can use the philosopher's table to create boons. These boons can be added to guns to make them more powerful and more effective at taking down the swarms of enemies. The user will need to figure which recipes make which potions. |
 | **Generators** | Killing shadow demons gives you energy points. These energy points can be used to unlock generators. Unlocking these generators will make the difficulty harder but will also get you closer to beating the game|
 | **Transmutation** | Combining guns with boons to make new powerful weapons with special effects|
 
@@ -112,7 +112,9 @@ In this game shadows are used as the main enemy in the game, resembling dark (ph
 
 ## Enemies
 
-The enemies will be varying types of shadow creatures.
+As we all know, the failed experiments of the Egress project, experiment 34Q-C, caused ruptures through space. Out of these portals came ULAEs (Unidentified Light Absorbing Entities); but the guys at lab just call them the shadows. This failed experiment is what caused the quarantine, and what caused the special contractors to get involved. All knowledge about these creatures are classified. This CANNOT get out to the public. ULAEs are extremely dangerous, and have killed many staff members, as well as contractors. The government is getting suspicious of our experiments, and is attempting to intervene. It is IMPERATIVE that we contain these outbreak, and complete our experiments before this happens.
+
+These logs are a record of what we know about the ULAEs so far. They come in many shapes and levels are deadliness. We attempt to capture and study these entities when possible. Their property of disintegrating when dead make it impossible to study unless captured alive. They seem to absorb most forms of light and have a rigid and vial look to them. Some ULAEs are easy to capture, and have been well studied. Others are so dangerous that parts of the facility have been completely blocked off. There seems to be no end to the amount of enemies that come out of the ruptures, but for now we have them contained; it's just a question of how long this will last.
 
 ### Clawed Shadows
 
@@ -122,7 +124,7 @@ Clawed Shadows, also known as "Claws" are bi-pedal shadow demons with a single g
 
 ### Gunner Shadows
 
-The next most common shadows are the Gunner Shadows, or "Gunners". These creatures are bi-pedal, with two glowing eyes, two horns, and what looks like a cannon for a right arm. While they are a little more tricky to capture, they are still pretty dense and can be lured into a trap. While the Claws seem emotionless, the grunts seem constanly angry. They shoot blindly at anything that resembles human. They do not have the best accuracy as well. This all changes when they are commanded by a captain. They become calm, more organized, more accurate, and some even flanking the player. The projectile that these enemies shoot are slower than modern rifles, but also more deadly. It looks like a giant round black orb that get propelled out of their cannon hand.
+The next most common shadows are the Gunner Shadows, or "Gunners". These creatures are bi-pedal, with two glowing eyes, two horns, and what looks like a cannon for a right arm. While they are a little more tricky to capture, they are still pretty dense and can be lured into a trap. While the Claws seem emotionless, the grunts seem constantly angry. They shoot blindly at anything that resembles human. They do not have the best accuracy as well. This all changes when they are commanded by a captain. They become calm, more organized, more accurate, and some even flanking the player. The projectile that these enemies shoot are slower than modern rifles, but also more deadly. It looks like a giant round black orb that get propelled out of their cannon hand.
 
 Beware Gunners with red canon arms. This has only been seen a couple of times, but very few live to talk about it.
 
@@ -130,17 +132,49 @@ Beware Gunners with red canon arms. This has only been seen a couple of times, b
 
 ### Ravens
 
-Ravens are curious little creatures. They seem to be the only shadows that can fly. IQ is unknown, but they behave similar to pets of the 
+Ravens are curious little creatures. They seem to be the only shadows that can fly. IQ is unknown, but they seem to act more like pets of the other shadows. They are emotionless and fly around the player, shooting a giant beam out of their mouths. This beam is dark and hot to the touch. It mimics the properties of plasma, but does not emit light. These ravens are weak but fire a powerful blast that can melt through armor. They are even more annoying when their are multiple at once. When together, they swarm the player, spreading out, and hitting them from every direction. These flying beasts have been difficult to catch, and their dark plasma blast makes them hard to catch. These bird-like seem to defend Captains when they are present, attacking the playing in smaller groups, but they're able to shoot their beams for longer when under the command of a Captain.
+
+> Concept art: <br/> <img src="./img/bird-once-human.png" width="300"/>
 
 ### Shadow Rangers
 
-#### 
+Not is known about the Rangers. These creatures are smaller than the other humanoid entities, but they one of the deadlier shadows. Their heads have been modified into a long barrel, that fire a strong and powerful projectile that pierces most forms of armor. They stay far away from the player, and never get caught.
+
+> Concept art:<br/> <img src="./img/sniperface-transformers.png" width="300">
+
+### Shadow Captain
+
+Like the Rangers, not much is known about Captains. These are proud creatures that hold a long blade and a firearm that resemble a flintlock. They are the only ones that seem to "speak" some type of language. They don't seem to do much damage to the player, but they make all other creatures fight harder. They also have a lot of health, and when the player does get close to them. They attack with their swords, slicing with overwhelming power. Only a single attempt to capture one has succeeded; but as soon as they were captured, they stabbed themselves with their own blade.
+
+### Theory A12-35
+
+This shadow is something of myth, nobody knows if they actually exist. They have only been mentioned across comms right as a contractor speaks his last words. These have never been seen by someone who has lived to tell the tale, and they have never been recorded. If this creature exists, it's extremely dangerous.
+
+> No concept art
 
 ## Stages
 
-### Weapons
+The game consists of several random stages that loop indefinitely. Each stage will have a different look, a different sound track, and a different boss.
 
-### 
+### Weapon Testing Facility
+
+### Lasers and Technology Laboratory
+
+### Rupture Research Laboratory
+
+### ULAE Research Laboratory
+
+### Alchemy Development Laboratory
+
+## Weapons
+
+### Shotgun
+
+### Pistol
+
+### Assault Rifle
+
+### Marksman Rifle
 
 # Art
 
