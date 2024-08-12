@@ -19,6 +19,24 @@
    2. [Theme Interpretation (Sacrifice Is Strength)](#theme-interpretation-sacrifice-is-strength)
    3. [Primary Mechanics](#primary-mechanics)
    4. [Secondary Mechanics](#secondary-mechanics)
+   5. [Enemies](#enemies)
+      1. [Clawed Shadows](#clawed-shadows)
+      2. [Gunner Shadows](#gunner-shadows)
+      3. [Ravens](#ravens)
+      4. [Shadow Rangers](#shadow-rangers)
+      5. [Shadow Captain](#shadow-captain)
+      6. [Theory A12-35](#theory-a12-35)
+   6. [Stages](#stages)
+      1. [Weapon Testing Facility](#weapon-testing-facility)
+      2. [Lasers and Technology Laboratory](#lasers-and-technology-laboratory)
+      3. [Rupture Research Laboratory](#rupture-research-laboratory)
+      4. [ULAE Research Laboratory](#ulae-research-laboratory)
+      5. [Alchemy Development Laboratory](#alchemy-development-laboratory)
+   7. [Weapons](#weapons)
+      1. [Pistol](#pistol)
+      2. [Shotgun](#shotgun)
+      3. [Assault Rifle](#assault-rifle)
+      4. [Marksman Rifle](#marksman-rifle)
 3. [Art](#art)
    1. [Theme Interpretation](#theme-interpretation)
    2. [Design](#design)
@@ -168,9 +186,9 @@ The game consists of several random stages that loop indefinitely. Each stage wi
 
 ## Weapons
 
-### Shotgun
-
 ### Pistol
+
+### Shotgun
 
 ### Assault Rifle
 
