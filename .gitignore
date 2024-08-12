@@ -1,6 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
-<<<<<<< HEAD
-=======
 .vscode/
->>>>>>> e311f8ab2159355caafb3a8b41914bb1ad083035
+.DS_store

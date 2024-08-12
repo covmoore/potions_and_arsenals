@@ -1,0 +1,223 @@
+# Game Design Document 📑
+
+## Title: Potions & Arsenals
+
+<img src="./img/Potions_and_arsenals.png" alt="title_image" width="700"/>
+
+# Table of Contents
+
+1. [Introduction](#introduction)
+   1. [Game Summary](#game-summary)
+   2. [Inspiration](#inspiration)
+   3. [Player Experience](#player-experience)
+   4. [Platform](#platform)
+   5. [Developer Software](#development-software)
+   6. [Genre](#genre)
+   7. [Target Audience](#target-audience)
+2. [Concept](#concept)
+   1. [Gameplay overview](#gameplay-overview)
+   2. [Theme Interpretation (Sacrifice Is Strength)](#theme-interpretation-sacrifice-is-strength)
+   3. [Primary Mechanics](#primary-mechanics)
+   4. [Secondary Mechanics](#secondary-mechanics)
+3. [Art](#art)
+   1. [Theme Interpretation](#theme-interpretation)
+   2. [Design](#design)
+4. [Audio](#audio)
+   1. [Music](#music)
+   2. [Sound Effects](#sound-effects)
+5. [Game Experience](#game-experience)
+   1. [UI](#ui)
+   2. [Controls](#controls)
+6. [Timeline](#timeline)
+
+
+
+# Introduction
+
+## Game Summary
+
+In Potions & Arsenals, you are a mad scientist working on a new type of blackout blinds for chronically online people when something goes wrong. You open a rift into the shadow realm and now shadow demons are trying to “perma-ban” you from existence. But good news! You are also one of the biggest weapons manufacturers in the state of Florida. Your goal is to use alchemy to upgrade your weapons and take out hordes of shadow demons. Turn back on all the factories to send the shadows back to where they came from.
+
+## Inspiration
+
+### COD Zombies
+
+<img src="./img/COD.webp" alt="title_image" width="500"/>
+
+Call Of Duty Zombies was a big inspiration for the gun play, and the constant wave of enemies chasing the player. It also inspired us to make the game in first person. The alchemy table is loosely based on the pack-a-punch system in COD. 
+
+### Risk of Rain 2
+
+<img src="./img/ROR2.jpg" alt="title_image" width="500"/>
+
+Risk of Rain 2 the main inspiration for the player upgrading system and the rogue-like gameplay style. We also took inspiration from the art-style. We want to follow the low-poly style and the look of the particles.
+
+## Player Experience
+
+In this rogue-like game, the user will need to shoot and eliminate a constant influx of enemies that constantly get harder and harder. The user will have to troubleshoot different recipes to get potions to upgrade their weapons. The player will need to use luck and strategy to craft the perfect weapon build and to defeat the shadows.
+
+## Platform
+
+The game is developed to be release on Windows and Linux as Standalone releases
+
+## Development Software
+
+Godot Engine 4
+
+<img src="./img/Godot_icon.png" alt="title_image" width="100"/>
+
+Blender 3.5 for graphics and UI
+
+<img src="./img/Blender_logo_no_text.png" alt="title_image" width="100"/>
+
+Garageband for music
+
+## Genre
+
+Singleplayer, FPS, rogue-like
+
+## Target Audience
+
+This game is for casual gamers because one can start a game and mindlessly shoot shadows for an hour without taking it too seriously and stop when the game gets too hard. The game is also for hardcore gamers that want to take the upgrading system to the limit and see how far they can get without dying.
+
+# Concept
+
+## Gameplay overview
+
+The player starts in a lab with a few shadow demons spawning in. They start with a basic assault rifle and handgun. They shoot demons that occasionally drop alchemy ingredients. The player combines ingredients to make potions and uses those potions on guns to make them more powerful. The player will upgrade their weapons to defeat harder swarms of enemies until they inevitably die.
+
+## Theme Interpretation (Sacrifice Is Strength)
+
+<text style="color:cyan" >‘Shadows’</text> interpretation - Shadows as a dark entity in the game. Resembling a dark and mysterious force that needs to be eliminated by the good or ‘light’ side.
+
+<text style="color:cyan">‘Alchemy’</text> interpretation - The action of using different ingredients and materials to produce something seemingly impossible or magical. To transmute into something new.
+
+In this game shadows are used as the main enemy in the game, resembling dark (physically & metaphorically) creatures that you must eliminate. The Alchemy is used as the main way to upgrade your characters, transmuting your weapons into something more magical and powerful.
+
+## Primary Mechanics
+
+| Mechanic | Description |
+| -------- | ----------- |
+| **Shooting** | The user will use different weapons to kill the shadow demons |
+| **Philosipher's Table**  | The user can use the philosopher's table to create boons. These boons can be added to guns to make them more powerful and more effective at taking down the swarms of enemies. The user will need to figure which recipes make which potions. |
+| **Generators** | Killing shadow demons gives you energy points. These energy points can be used to unlock generators. Unlocking these generators will make the difficulty harder but will also get you closer to beating the game|
+| **Transmutation** | Combining guns with boons to make new powerful weapons with special effects|
+
+## Secondary Mechanics
+
+| Mechanic | Description |
+| -------- | ----------- |
+| Time as difficulty | The more time that passed. The more enemies spawn in at once, the harder they hit, and the more health they have. |
+| Perma-death | When the player dies, that’s it. They will have to start from scratch if they want to try again.
+
+## Enemies
+
+As we all know, the failed experiments of the Egress project, experiment 34Q-C, caused ruptures through space. Out of these portals came ULAEs (Unidentified Light Absorbing Entities); but the guys at lab just call them the shadows. This failed experiment is what caused the quarantine, and what caused the special contractors to get involved. All knowledge about these creatures are classified. This CANNOT get out to the public. ULAEs are extremely dangerous, and have killed many staff members, as well as contractors. The government is getting suspicious of our experiments, and is attempting to intervene. It is IMPERATIVE that we contain these outbreak, and complete our experiments before this happens.
+
+These logs are a record of what we know about the ULAEs so far. They come in many shapes and levels are deadliness. We attempt to capture and study these entities when possible. Their property of disintegrating when dead make it impossible to study unless captured alive. They seem to absorb most forms of light and have a rigid and vial look to them. Some ULAEs are easy to capture, and have been well studied. Others are so dangerous that parts of the facility have been completely blocked off. There seems to be no end to the amount of enemies that come out of the ruptures, but for now we have them contained; it's just a question of how long this will last.
+
+### Clawed Shadows
+
+Clawed Shadows, also known as "Claws" are bi-pedal shadow demons with a single glowing eye on their face, and giant claws pn their left hands. They either walk or sprint towards the player and try to melee them to death. These are usually the least dangerous of the shadows, and therefore, the most studied. They whisper constantly in a language that we do not yet understand. They seem to have a very low IQ, and alone are quite stupid. When alone, they walk towards the player. However, when they are commanded by a captain, they sprint at the player, and swing faster slashes at the player. Even when commanded, claws are still the weakest of the shadows with one exception. If they have glowing claws, then stay as far away as possible.
+
+> Concept art:<br/><img src="./img/ghost_freak.png" width="200"/><br/> This with legs
+
+### Gunner Shadows
+
+The next most common shadows are the Gunner Shadows, or "Gunners". These creatures are bi-pedal, with two glowing eyes, two horns, and what looks like a cannon for a right arm. While they are a little more tricky to capture, they are still pretty dense and can be lured into a trap. While the Claws seem emotionless, the grunts seem constantly angry. They shoot blindly at anything that resembles human. They do not have the best accuracy as well. This all changes when they are commanded by a captain. They become calm, more organized, more accurate, and some even flanking the player. The projectile that these enemies shoot are slower than modern rifles, but also more deadly. It looks like a giant round black orb that get propelled out of their cannon hand.
+
+Beware Gunners with red canon arms. This has only been seen a couple of times, but very few live to talk about it.
+
+> Concept art: </br><img src="./img/doom_soldier.png" width ="200"/><br/> This but obviously more shadow-like
+
+### Ravens
+
+Ravens are curious little creatures. They seem to be the only shadows that can fly. IQ is unknown, but they seem to act more like pets of the other shadows. They are emotionless and fly around the player, shooting a giant beam out of their mouths. This beam is dark and hot to the touch. It mimics the properties of plasma, but does not emit light. These ravens are weak but fire a powerful blast that can melt through armor. They are even more annoying when their are multiple at once. When together, they swarm the player, spreading out, and hitting them from every direction. These flying beasts have been difficult to catch, and their dark plasma blast makes them hard to catch. These bird-like seem to defend Captains when they are present, attacking the playing in smaller groups, but they're able to shoot their beams for longer when under the command of a Captain.
+
+> Concept art: <br/> <img src="./img/bird-once-human.png" width="300"/>
+
+### Shadow Rangers
+
+Not is known about the Rangers. These creatures are smaller than the other humanoid entities, but they one of the deadlier shadows. Their heads have been modified into a long barrel, that fire a strong and powerful projectile that pierces most forms of armor. They stay far away from the player, and never get caught.
+
+> Concept art:<br/> <img src="./img/sniperface-transformers.png" width="300">
+
+### Shadow Captain
+
+Like the Rangers, not much is known about Captains. These are proud creatures that hold a long blade and a firearm that resemble a flintlock. They are the only ones that seem to "speak" some type of language. They don't seem to do much damage to the player, but they make all other creatures fight harder. They also have a lot of health, and when the player does get close to them. They attack with their swords, slicing with overwhelming power. Only a single attempt to capture one has succeeded; but as soon as they were captured, they stabbed themselves with their own blade.
+
+### Theory A12-35
+
+This shadow is something of myth, nobody knows if they actually exist. They have only been mentioned across comms right as a contractor speaks his last words. These have never been seen by someone who has lived to tell the tale, and they have never been recorded. If this creature exists, it's extremely dangerous.
+
+> No concept art
+
+## Stages
+
+The game consists of several random stages that loop indefinitely. Each stage will have a different look, a different sound track, and a different boss.
+
+### Weapon Testing Facility
+
+### Lasers and Technology Laboratory
+
+### Rupture Research Laboratory
+
+### ULAE Research Laboratory
+
+### Alchemy Development Laboratory
+
+## Weapons
+
+### Shotgun
+
+### Pistol
+
+### Assault Rifle
+
+### Marksman Rifle
+
+# Art
+
+## Theme Interpretation
+
+With the themes of the jam being shadow and alchemy, we decided to go with darker colors and try to go for a more mysterious look. The game will take place in a lab, so the art style will resemble this. We’re imagining the map layout to look similar to Five on BO2 Zombies while having the art style closer to ROR2.
+
+## Design
+
+The art experience on the team is very limited so we hope to lean into that by using low-poly designs. We will shoot for more of a cartoon look in the enemies and maybe try to leverage filters to get this look
+
+We would ideally want to go with a look that uses low-poly art and cel shading style. We want to use toon style shading.
+
+<img src="./img/Toon-shader.png" alt="title_image" width="400"/>
+<img src="./img/spectre_divide.png" alt="spectre-divide" width="350">
+<img src="./img/Wind-waker-hd-zelda-link.webp" alt="spectre-divide" width="400">
+<img src="./img/artwork5.png" alt="spectre-divide" width="500">
+
+[Cel-Shading in Godot]("https://youtu.be/io2y8RgF39A?si=MSstMW9lILv_zGRZ")
+
+# Audio
+
+## Music
+
+To add to the overall theme and vibe of the game, there will be minimalism incorporated into the music. Heavy use of reverb and effects to fill space within the few instruments. Bass and drums will generally constitute the majority of tracks with accompanying softer sounds. Mainly through synthesized sounds rather than acoustic will further suggest the retro style.
+
+## Sound Effects
+
+To add more flare and polish to the experience, a multitude of environmental sound effects will give weight and feedback to the player’s actions. Rather than foley, or otherwise realistic sounds, synthesized blips, bloops, and whooshes are used.
+
+# Game Experience
+
+## UI
+
+On top of the rigid pixel art constituting the rest of the art, a more smooth, higher definition style will be incorporated in the UI. Utilizing many shades of white and black allowed in the art restriction, anti-aliasing is used to further emphasize the UI.
+
+## Controls
+
+Keyboard
+	Arrow keys / WASD
+Gamepad
+	Dpad
+
+# Timeline
+
+[Project](https://github.com/users/covmoore/projects/2/views/1)
