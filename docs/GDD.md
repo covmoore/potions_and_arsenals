@@ -20,23 +20,23 @@
    3. [Primary Mechanics](#primary-mechanics)
    4. [Secondary Mechanics](#secondary-mechanics)
    5. [Enemies](#enemies)
-      1. [Clawed Shadows](#clawed-shadows)
-      2. [Gunner Shadows](#gunner-shadows)
-      3. [Ravens](#ravens)
-      4. [Shadow Rangers](#shadow-rangers)
-      5. [Shadow Captain](#shadow-captain)
-      6. [Theory A12-35](#theory-a12-35)
+	  1. [Clawed Shadows](#clawed-shadows)
+	  2. [Gunner Shadows](#gunner-shadows)
+	  3. [Ravens](#ravens)
+	  4. [Shadow Rangers](#shadow-rangers)
+	  5. [Shadow Captain](#shadow-captain)
+	  6. [Theory A12-35](#theory-a12-35)
    6. [Stages](#stages)
-      1. [Weapon Testing Facility](#weapon-testing-facility)
-      2. [Lasers and Technology Laboratory](#lasers-and-technology-laboratory)
-      3. [Rupture Research Laboratory](#rupture-research-laboratory)
-      4. [ULAE Research Laboratory](#ulae-research-laboratory)
-      5. [Alchemy Development Laboratory](#alchemy-development-laboratory)
+	  1. [Weapon Testing Facility](#weapon-testing-facility)
+	  2. [Lasers and Technology Laboratory](#lasers-and-technology-laboratory)
+	  3. [Rupture Research Laboratory](#rupture-research-laboratory)
+	  4. [ULAE Research Laboratory](#ulae-research-laboratory)
+	  5. [Alchemy Development Laboratory](#alchemy-development-laboratory)
    7. [Weapons](#weapons)
-      1. [Pistol](#pistol)
-      2. [Shotgun](#shotgun)
-      3. [Assault Rifle](#assault-rifle)
-      4. [Marksman Rifle](#marksman-rifle)
+	  1. [Pistol](#pistol)
+	  2. [Shotgun](#shotgun)
+	  3. [Assault Rifle](#assault-rifle)
+	  4. [Marksman Rifle](#marksman-rifle)
 3. [Art](#art)
    1. [Theme Interpretation](#theme-interpretation)
    2. [Design](#design)
@@ -206,7 +206,7 @@ The art experience on the team is very limited so we hope to lean into that by u
 
 We would ideally want to go with a look that uses low-poly art and cel shading style. We want to use toon style shading.
 
-<img src="./img/Toon-shader.png" alt="title_image" width="400"/>
+<img src="./img/toon_shader.png" alt="title_image" width="400"/>
 <img src="./img/spectre_divide.png" alt="spectre-divide" width="350">
 <img src="./img/Wind-waker-hd-zelda-link.webp" alt="spectre-divide" width="400">
 <img src="./img/artwork5.png" alt="spectre-divide" width="500">
